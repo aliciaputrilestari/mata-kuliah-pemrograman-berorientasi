@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOP Dart Interactive</title>
+<title>OOP Dart</title>
 
 <style>
 *{
@@ -12,15 +12,19 @@
     box-sizing:border-box;
     font-family:'Segoe UI',sans-serif;
 }
+
 body{
     background:linear-gradient(135deg,#ff4da6,#4da6ff);
     color:white;
 }
+
+/* HEADER */
 header{
     text-align:center;
-    padding:40px;
-    background:rgba(0,0,0,0.8);
+    padding:40px 20px;
+    background:rgba(0,0,0,0.75);
 }
+
 header h1{
     font-size:35px;
     background:linear-gradient(45deg,#ff99dd,#66ccff);
@@ -28,72 +32,105 @@ header h1{
     color:transparent;
     animation:goyang 3s infinite alternate;
 }
+
 @keyframes goyang{
     from{transform:translateX(-4px);}
     to{transform:translateX(4px);}
 }
+
+header p{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* LAYOUT */
 .container{
     display:flex;
     width:95%;
     margin:40px auto;
     gap:30px;
 }
-.content{flex:2;}
+
+/* CONTENT */
+.content{
+    flex:2;
+}
+
 .section{
-    background:rgba(0,0,0,0.85);
+    background:rgba(0,0,0,0.8);
     padding:25px;
     margin-bottom:25px;
     border-radius:15px;
     box-shadow:0 0 20px #ff66cc;
+    transition:0.3s;
 }
+
+.section:hover{
+    transform:scale(1.02);
+    box-shadow:0 0 25px #66ccff;
+}
+
 .section h2{
+    margin-bottom:15px;
     color:#66ccff;
-    margin-bottom:10px;
 }
+
 .code-box{
     background:#111;
     padding:15px;
     border-radius:10px;
     border:2px solid #66ccff;
-    margin-top:10px;
-    font-family:monospace;
     color:#00ffcc;
-}
-button{
-    margin-top:10px;
-    padding:6px 12px;
-    border:none;
-    border-radius:6px;
-    background:linear-gradient(45deg,#ff4da6,#4da6ff);
-    color:white;
-    cursor:pointer;
-}
-.output{
-    margin-top:10px;
-    background:black;
-    padding:10px;
-    border-radius:8px;
     font-family:monospace;
-    color:lime;
+    overflow-x:auto;
+    margin-top:10px;
 }
+
+/* COMMENT */
 .comment-box{
     flex:1;
     background:rgba(0,0,0,0.9);
     padding:20px;
     border-radius:15px;
+    box-shadow:0 0 25px #66ccff;
+    height:fit-content;
+    position:sticky;
+    top:20px;
 }
+
+.comment-box h2{
+    text-align:center;
+    margin-bottom:15px;
+    color:#ff99dd;
+}
+
 input,textarea{
     width:100%;
-    padding:8px;
-    margin:6px 0;
-    border-radius:6px;
+    padding:10px;
+    margin:8px 0;
     border:none;
+    border-radius:8px;
 }
+
+button{
+    padding:8px 12px;
+    border:none;
+    border-radius:6px;
+    background:linear-gradient(45deg,#ff4da6,#4da6ff);
+    color:white;
+    cursor:pointer;
+    margin-top:5px;
+}
+
 .comment-item{
     background:rgba(255,255,255,0.1);
-    padding:8px;
+    padding:10px;
     border-radius:8px;
-    margin-top:8px;
+    margin-top:10px;
+}
+
+.comment-item strong{
+    color:#66ccff;
 }
 </style>
 </head>
@@ -117,117 +154,101 @@ input,textarea{
 
 <!-- 02 -->
 <div class="section">
-<h2>02 - Konsep Dasar</h2>
-<p>Class, Object, Attribute, Method.</p>
+<h2>02 - Class</h2>
+<p>Class adalah blueprint untuk membuat object.</p>
 </div>
-
-<!-- TEMPLATE FUNCTION RUN -->
-<script>
-function run(id,text){
-    document.getElementById(id).innerText=text;
-}
-</script>
 
 <!-- 03 -->
 <div class="section">
-<h2>03 - Class Car</h2>
-<div class="code-box">
-class Car { <br>
-&nbsp;&nbsp;start(){ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;return "Car started!"; <br>
-&nbsp;&nbsp;} <br>
-}
-</div>
-<button onclick="run('out3','Car started!')">Jalankan</button>
-<div class="output" id="out3"></div>
+<h2>03 - Object</h2>
+<p>Object adalah instance dari class.</p>
 </div>
 
 <!-- 04 -->
 <div class="section">
-<h2>04 - Object</h2>
-<div class="code-box">
-let car = new Object();
-</div>
-<button onclick="run('out4','Object berhasil dibuat')">Jalankan</button>
-<div class="output" id="out4"></div>
+<h2>04 - Attribute</h2>
+<p>Attribute adalah data yang dimiliki class.</p>
 </div>
 
 <!-- 05 -->
 <div class="section">
-<h2>05 - Constructor</h2>
-<div class="code-box">
-function Mobil(nama){ <br>
-&nbsp;&nbsp;this.nama = nama; <br>
-}
-</div>
-<button onclick="run('out5','Constructor berjalan')">Jalankan</button>
-<div class="output" id="out5"></div>
+<h2>05 - Method</h2>
+<p>Method adalah fungsi dalam class.</p>
 </div>
 
 <!-- 06 -->
 <div class="section">
-<h2>06 - Class Mahasiswa</h2>
+<h2>06 - Constructor</h2>
 <div class="code-box">
-class Mahasiswa{ <br>
-&nbsp;&nbsp;constructor(nama){ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;this.nama = nama; <br>
-&nbsp;&nbsp;} <br>
+<pre>
+class Mobil{
+  String nama;
+  Mobil(this.nama);
 }
+</pre>
 </div>
-<button onclick="run('out6','Mahasiswa dibuat')">Jalankan</button>
-<div class="output" id="out6"></div>
 </div>
 
 <!-- 07 -->
 <div class="section">
 <h2>07 - Encapsulation</h2>
 <div class="code-box">
-class Person{ <br>
-&nbsp;&nbsp;#nama; <br>
+<pre>
+class Person{
+  String _nama;
+  Person(this._nama);
 }
+</pre>
 </div>
-<button onclick="run('out7','Encapsulation berhasil')">Jalankan</button>
-<div class="output" id="out7"></div>
 </div>
 
 <!-- 08 -->
 <div class="section">
 <h2>08 - This Keyword</h2>
 <div class="code-box">
-this.nama = "Produk";
+<pre>
+class Product{
+  String nama;
+  Product(this.nama);
+}
+</pre>
 </div>
-<button onclick="run('out8','This keyword berjalan')">Jalankan</button>
-<div class="output" id="out8"></div>
 </div>
 
 <!-- 09 -->
 <div class="section">
-<h2>09 - Parameter</h2>
+<h2>09 - Named Parameter</h2>
 <div class="code-box">
-function Produk(id){ return id; }
+<pre>
+class Produk{
+  final String id;
+  Produk({required this.id});
+}
+</pre>
 </div>
-<button onclick="run('out9','Parameter diterima')">Jalankan</button>
-<div class="output" id="out9"></div>
 </div>
 
 <!-- 10 -->
 <div class="section">
 <h2>10 - Kesimpulan</h2>
-<p>OOP mempermudah struktur program.</p>
+<p>OOP mempermudah pengelolaan program dengan konsep object.</p>
 </div>
 
 <!-- 11 -->
 <div class="section">
 <h2>11 - Class Hewan</h2>
 <div class="code-box">
-class Hewan{ <br>
-&nbsp;&nbsp;constructor(nama){ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;this.nama = nama; <br>
-&nbsp;&nbsp;} <br>
+<pre>
+class Hewan{
+  String nama;
+  Hewan(this.nama);
+
+  void bersuara(){
+    print("$nama bersuara");
+  }
 }
+</pre>
 </div>
-<button onclick="run('out11','Hewan bersuara!')">Jalankan</button>
-<div class="output" id="out11"></div>
 </div>
 
 </div>
@@ -235,9 +256,11 @@ class Hewan{ <br>
 <!-- COMMENT -->
 <div class="comment-box">
 <h2>Forum Komentar</h2>
-<input type="text" id="nama" placeholder="Nama">
-<textarea id="komentar" rows="3" placeholder="Komentar"></textarea>
+
+<input type="text" id="nama" placeholder="Nama...">
+<textarea id="komentar" rows="3" placeholder="Tulis komentar..."></textarea>
 <button onclick="tambahKomentar()">Kirim</button>
+
 <div id="daftarKomentar"></div>
 </div>
 
@@ -247,43 +270,53 @@ class Hewan{ <br>
 let komentarData = JSON.parse(localStorage.getItem("komentar")) || [];
 
 function renderKomentar(){
-    let c=document.getElementById("daftarKomentar");
-    c.innerHTML="";
-    komentarData.forEach((item,i)=>{
+    let container=document.getElementById("daftarKomentar");
+    container.innerHTML="";
+    komentarData.forEach((item,index)=>{
         let div=document.createElement("div");
         div.className="comment-item";
         div.innerHTML=`
-        <strong>${item.nama}</strong><br>
-        ${item.isi}<br>
-        <button onclick="editKomentar(${i})">Edit</button>
-        <button onclick="hapusKomentar(${i})">Hapus</button>
+            <strong>${item.nama}</strong><br>
+            ${item.isi}<br>
+            <button onclick="editKomentar(${index})">Edit</button>
+            <button onclick="hapusKomentar(${index})">Hapus</button>
         `;
-        c.appendChild(div);
+        container.appendChild(div);
     });
 }
+
 function tambahKomentar(){
-    let n=document.getElementById("nama").value;
-    let k=document.getElementById("komentar").value;
-    if(n===""||k===""){alert("Isi dulu");return;}
-    komentarData.push({nama:n,isi:k});
+    let nama=document.getElementById("nama").value;
+    let isi=document.getElementById("komentar").value;
+
+    if(nama===""||isi===""){
+        alert("Isi dulu!");
+        return;
+    }
+
+    komentarData.push({nama:nama,isi:isi});
     localStorage.setItem("komentar",JSON.stringify(komentarData));
+
     document.getElementById("nama").value="";
     document.getElementById("komentar").value="";
     renderKomentar();
 }
-function hapusKomentar(i){
-    komentarData.splice(i,1);
+
+function hapusKomentar(index){
+    komentarData.splice(index,1);
     localStorage.setItem("komentar",JSON.stringify(komentarData));
     renderKomentar();
 }
-function editKomentar(i){
-    let baru=prompt("Edit:",komentarData[i].isi);
+
+function editKomentar(index){
+    let baru=prompt("Edit komentar:",komentarData[index].isi);
     if(baru!==null){
-        komentarData[i].isi=baru;
+        komentarData[index].isi=baru;
         localStorage.setItem("komentar",JSON.stringify(komentarData));
         renderKomentar();
     }
 }
+
 renderKomentar();
 </script>
 
