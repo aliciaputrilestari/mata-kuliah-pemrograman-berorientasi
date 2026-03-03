@@ -16,7 +16,6 @@
 body{
     background:linear-gradient(135deg,#ff4da6,#4da6ff);
     color:white;
-    overflow-x:hidden;
 }
 
 /* HEADER */
@@ -24,7 +23,6 @@ header{
     text-align:center;
     padding:40px 20px;
     background:rgba(0,0,0,0.75);
-    animation:fadeIn 2s ease-in-out;
 }
 
 header h1{
@@ -32,24 +30,17 @@ header h1{
     background:linear-gradient(45deg,#ff99dd,#66ccff);
     -webkit-background-clip:text;
     color:transparent;
-    animation:shake 3s infinite alternate;
+    animation:goyang 3s infinite alternate;
+}
+
+@keyframes goyang{
+    from{transform:translateX(-3px);}
+    to{transform:translateX(3px);}
 }
 
 header p{
     margin-top:10px;
     font-weight:bold;
-    color:#fff;
-}
-
-/* Animations */
-@keyframes shake{
-    0%{transform:translateX(-3px);}
-    100%{transform:translateX(3px);}
-}
-
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
 }
 
 /* LAYOUT */
@@ -60,7 +51,7 @@ header p{
     gap:30px;
 }
 
-/* LEFT CONTENT */
+/* CONTENT */
 .content{
     flex:2;
 }
@@ -71,11 +62,6 @@ header p{
     margin-bottom:30px;
     border-radius:15px;
     box-shadow:0 0 20px #ff66cc;
-    transition:0.3s;
-}
-
-.section:hover{
-    transform:scale(1.02);
 }
 
 .section h2{
@@ -163,16 +149,130 @@ button:hover{
 
 <div class="content">
 
+<!-- 01 -->
 <div class="section">
 <h2>01 - Pengertian OOP</h2>
-<p>OOP adalah paradigma pemrograman berbasis object.</p>
+<p>OOP adalah paradigma pemrograman yang berfokus pada object sebagai dasar pembuatan program.</p>
 </div>
 
+<!-- 02 -->
+<div class="section">
+<h2>02 - Konsep Dasar</h2>
+<p>Class adalah blueprint. Object adalah instance. Attribute adalah data. Method adalah fungsi.</p>
+</div>
+
+<!-- 03 -->
+<div class="section">
+<h2>03 - Class Car</h2>
+<div class="code-box">
+<pre>
+class Car {
+  String? model;
+  String? color;
+
+  void start(){
+    print("Car started!");
+  }
+}
+</pre>
+</div>
+</div>
+
+<!-- 04 -->
+<div class="section">
+<h2>04 - Object</h2>
+<div class="code-box">
+<pre>
+void main(){
+  Car myCar = Car();
+  myCar.model = "Sedan";
+  myCar.start();
+}
+</pre>
+</div>
+</div>
+
+<!-- 05 -->
+<div class="section">
+<h2>05 - Constructor</h2>
+<div class="code-box">
+<pre>
+class Car {
+  String model;
+  Car(this.model);
+}
+</pre>
+</div>
+</div>
+
+<!-- 06 -->
+<div class="section">
+<h2>06 - Class Mahasiswa</h2>
+<div class="code-box">
+<pre>
+class Mahasiswa{
+  String nama;
+  String nim;
+
+  Mahasiswa(this.nama,this.nim);
+}
+</pre>
+</div>
+</div>
+
+<!-- 07 -->
+<div class="section">
+<h2>07 - Encapsulation</h2>
+<div class="code-box">
+<pre>
+class Person{
+  String _nama;
+  Person(this._nama);
+
+  String get nama => _nama;
+}
+</pre>
+</div>
+</div>
+
+<!-- 08 -->
+<div class="section">
+<h2>08 - This Keyword</h2>
+<div class="code-box">
+<pre>
+class Product{
+  String nama;
+  Product(this.nama);
+}
+</pre>
+</div>
+</div>
+
+<!-- 09 -->
+<div class="section">
+<h2>09 - Named Parameter</h2>
+<div class="code-box">
+<pre>
+class Produk{
+  final String id;
+  Produk({required this.id});
+}
+</pre>
+</div>
+</div>
+
+<!-- 10 -->
+<div class="section">
+<h2>10 - Kesimpulan</h2>
+<p>OOP mempermudah pengelolaan kode dengan konsep class dan object.</p>
+</div>
+
+<!-- 11 -->
 <div class="section">
 <h2>11 - Class Hewan</h2>
 <div class="code-box">
 <pre>
-class Hewan {
+class Hewan{
   String nama;
 
   Hewan(this.nama);
@@ -187,6 +287,7 @@ class Hewan {
 
 </div>
 
+<!-- COMMENT SIDE -->
 <div class="comment-box">
 <h2>Forum Komentar</h2>
 
@@ -204,14 +305,13 @@ let komentarData = JSON.parse(localStorage.getItem("komentar")) || [];
 
 function renderKomentar(){
     let container = document.getElementById("daftarKomentar");
-    container.innerHTML = "";
-
+    container.innerHTML="";
     komentarData.forEach((item,index)=>{
-        let div = document.createElement("div");
+        let div=document.createElement("div");
         div.className="comment-item";
-        div.innerHTML = `
+        div.innerHTML=`
             <strong>${item.nama}</strong><br>
-            <span>${item.isi}</span><br>
+            ${item.isi}<br>
             <button class="action-btn" onclick="editKomentar(${index})">Edit</button>
             <button class="action-btn" onclick="hapusKomentar(${index})">Hapus</button>
         `;
@@ -220,17 +320,16 @@ function renderKomentar(){
 }
 
 function tambahKomentar(){
-    let nama = document.getElementById("nama").value;
-    let isi = document.getElementById("komentar").value;
+    let nama=document.getElementById("nama").value;
+    let isi=document.getElementById("komentar").value;
 
     if(nama===""||isi===""){
-        alert("Isi dulu semuanya!");
+        alert("Isi dulu ya!");
         return;
     }
 
     komentarData.push({nama:nama,isi:isi});
     localStorage.setItem("komentar",JSON.stringify(komentarData));
-
     document.getElementById("nama").value="";
     document.getElementById("komentar").value="";
     renderKomentar();
@@ -243,7 +342,7 @@ function hapusKomentar(index){
 }
 
 function editKomentar(index){
-    let baru = prompt("Edit komentar:",komentarData[index].isi);
+    let baru=prompt("Edit komentar:",komentarData[index].isi);
     if(baru!==null){
         komentarData[index].isi=baru;
         localStorage.setItem("komentar",JSON.stringify(komentarData));
