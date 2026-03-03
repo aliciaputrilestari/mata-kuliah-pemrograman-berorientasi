@@ -34,8 +34,8 @@ header h1{
 }
 
 @keyframes goyang{
-    from{transform:translateX(-3px);}
-    to{transform:translateX(3px);}
+    from{transform:translateX(-4px);}
+    to{transform:translateX(4px);}
 }
 
 header p{
@@ -57,11 +57,17 @@ header p{
 }
 
 .section{
-    background:rgba(0,0,0,0.75);
+    background:rgba(0,0,0,0.8);
     padding:25px;
-    margin-bottom:30px;
+    margin-bottom:25px;
     border-radius:15px;
     box-shadow:0 0 20px #ff66cc;
+    transition:0.3s;
+}
+
+.section:hover{
+    transform:scale(1.02);
+    box-shadow:0 0 25px #66ccff;
 }
 
 .section h2{
@@ -77,13 +83,14 @@ header p{
     color:#00ffcc;
     font-family:monospace;
     overflow-x:auto;
+    margin-top:10px;
 }
 
 /* COMMENT */
 .comment-box{
     flex:1;
-    background:rgba(0,0,0,0.85);
-    padding:25px;
+    background:rgba(0,0,0,0.9);
+    padding:20px;
     border-radius:15px;
     box-shadow:0 0 25px #66ccff;
     height:fit-content;
@@ -103,7 +110,6 @@ input,textarea{
     margin:8px 0;
     border:none;
     border-radius:8px;
-    outline:none;
 }
 
 button{
@@ -116,10 +122,6 @@ button{
     margin-top:5px;
 }
 
-button:hover{
-    opacity:0.8;
-}
-
 .comment-item{
     background:rgba(255,255,255,0.1);
     padding:10px;
@@ -129,11 +131,6 @@ button:hover{
 
 .comment-item strong{
     color:#66ccff;
-}
-
-.action-btn{
-    margin-right:5px;
-    font-size:12px;
 }
 </style>
 </head>
@@ -152,69 +149,41 @@ button:hover{
 <!-- 01 -->
 <div class="section">
 <h2>01 - Pengertian OOP</h2>
-<p>OOP adalah paradigma pemrograman yang berfokus pada object sebagai dasar pembuatan program.</p>
+<p>OOP adalah paradigma pemrograman berbasis object.</p>
 </div>
 
 <!-- 02 -->
 <div class="section">
-<h2>02 - Konsep Dasar</h2>
-<p>Class adalah blueprint. Object adalah instance. Attribute adalah data. Method adalah fungsi.</p>
+<h2>02 - Class</h2>
+<p>Class adalah blueprint untuk membuat object.</p>
 </div>
 
 <!-- 03 -->
 <div class="section">
-<h2>03 - Class Car</h2>
-<div class="code-box">
-<pre>
-class Car {
-  String? model;
-  String? color;
-
-  void start(){
-    print("Car started!");
-  }
-}
-</pre>
-</div>
+<h2>03 - Object</h2>
+<p>Object adalah instance dari class.</p>
 </div>
 
 <!-- 04 -->
 <div class="section">
-<h2>04 - Object</h2>
-<div class="code-box">
-<pre>
-void main(){
-  Car myCar = Car();
-  myCar.model = "Sedan";
-  myCar.start();
-}
-</pre>
-</div>
+<h2>04 - Attribute</h2>
+<p>Attribute adalah data yang dimiliki class.</p>
 </div>
 
 <!-- 05 -->
 <div class="section">
-<h2>05 - Constructor</h2>
-<div class="code-box">
-<pre>
-class Car {
-  String model;
-  Car(this.model);
-}
-</pre>
-</div>
+<h2>05 - Method</h2>
+<p>Method adalah fungsi dalam class.</p>
 </div>
 
 <!-- 06 -->
 <div class="section">
-<h2>06 - Class Mahasiswa</h2>
+<h2>06 - Constructor</h2>
 <div class="code-box">
 <pre>
-class Mahasiswa{
+class Mobil{
   String nama;
-  String nim;
-
-  Mahasiswa(this.nama,this.nim);
+  Mobil(this.nama);
 }
 </pre>
 </div>
@@ -228,8 +197,6 @@ class Mahasiswa{
 class Person{
   String _nama;
   Person(this._nama);
-
-  String get nama => _nama;
 }
 </pre>
 </div>
@@ -264,7 +231,7 @@ class Produk{
 <!-- 10 -->
 <div class="section">
 <h2>10 - Kesimpulan</h2>
-<p>OOP mempermudah pengelolaan kode dengan konsep class dan object.</p>
+<p>OOP mempermudah pengelolaan program dengan konsep object.</p>
 </div>
 
 <!-- 11 -->
@@ -274,11 +241,10 @@ class Produk{
 <pre>
 class Hewan{
   String nama;
-
   Hewan(this.nama);
 
   void bersuara(){
-    print("$nama sedang bersuara!");
+    print("$nama bersuara");
   }
 }
 </pre>
@@ -287,7 +253,7 @@ class Hewan{
 
 </div>
 
-<!-- COMMENT SIDE -->
+<!-- COMMENT -->
 <div class="comment-box">
 <h2>Forum Komentar</h2>
 
@@ -304,7 +270,7 @@ class Hewan{
 let komentarData = JSON.parse(localStorage.getItem("komentar")) || [];
 
 function renderKomentar(){
-    let container = document.getElementById("daftarKomentar");
+    let container=document.getElementById("daftarKomentar");
     container.innerHTML="";
     komentarData.forEach((item,index)=>{
         let div=document.createElement("div");
@@ -312,8 +278,8 @@ function renderKomentar(){
         div.innerHTML=`
             <strong>${item.nama}</strong><br>
             ${item.isi}<br>
-            <button class="action-btn" onclick="editKomentar(${index})">Edit</button>
-            <button class="action-btn" onclick="hapusKomentar(${index})">Hapus</button>
+            <button onclick="editKomentar(${index})">Edit</button>
+            <button onclick="hapusKomentar(${index})">Hapus</button>
         `;
         container.appendChild(div);
     });
@@ -324,12 +290,13 @@ function tambahKomentar(){
     let isi=document.getElementById("komentar").value;
 
     if(nama===""||isi===""){
-        alert("Isi dulu ya!");
+        alert("Isi dulu!");
         return;
     }
 
     komentarData.push({nama:nama,isi:isi});
     localStorage.setItem("komentar",JSON.stringify(komentarData));
+
     document.getElementById("nama").value="";
     document.getElementById("komentar").value="";
     renderKomentar();
