@@ -1,136 +1,291 @@
-// OOP Dart - 01 sampai 11
-// Nama: Alicia Putri Lestari | NIM: 251410011
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOP Dart Interactive</title>
 
-// ================= 03 - Class Car =================
-class Car {
-  String model;
-  String color;
-
-  Car({required this.model, required this.color});
-
-  void start() {
-    print('$model berwarna $color mulai berjalan!');
-  }
-
-  void stop() {
-    print('$model berhenti.');
-  }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
-
-// ================= 06 - Class Mahasiswa =================
-class Mahasiswa {
-  String nama;
-  String nim;
-
-  Mahasiswa(this.nama, this.nim);
-
-  void info() {
-    print('Nama: $nama | NIM: $nim');
-  }
+body{
+    background:linear-gradient(135deg,#ff4da6,#4da6ff);
+    color:white;
 }
-
-// ================= 07 - Encapsulation =================
-class Person {
-  String _nama; // private
-
-  Person(this._nama);
-
-  String get nama => _nama;
-  set nama(String newName) => _nama = newName;
+header{
+    text-align:center;
+    padding:40px;
+    background:rgba(0,0,0,0.8);
 }
-
-// ================= 08 - This Keyword =================
-class Product {
-  String nama;
-
-  Product(this.nama);
-
-  void show() {
-    print('Produk: $nama');
-  }
+header h1{
+    font-size:35px;
+    background:linear-gradient(45deg,#ff99dd,#66ccff);
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:goyang 3s infinite alternate;
 }
-
-// ================= 09 - Named Parameter =================
-class Produk {
-  final String id;
-  final String nama;
-
-  Produk({required this.id, required this.nama});
-
-  void info() {
-    print('ID: $id | Nama: $nama');
-  }
+@keyframes goyang{
+    from{transform:translateX(-4px);}
+    to{transform:translateX(4px);}
 }
-
-// ================= 11 - Class Hewan =================
-class Hewan {
-  String nama;
-
-  Hewan(this.nama);
-
-  void bersuara() {
-    print('$nama sedang bersuara!');
-  }
+.container{
+    display:flex;
+    width:95%;
+    margin:40px auto;
+    gap:30px;
 }
-
-void main() {
-  // ================= 01 & 02 =================
-  print('01 - Pengertian OOP: Paradigma berbasis object.');
-  print('02 - Konsep Dasar: Class, Object, Attribute, Method.\n');
-
-  // ================= 03 =================
-  print('03 - Contoh Class Car');
-  Car mobil1 = Car(model: 'Toyota', color: 'Merah');
-  mobil1.start();
-  mobil1.stop();
-  print('');
-
-  // ================= 04 - Object =================
-  print('04 - Object: Instance dari class Car');
-  Car mobil2 = Car(model: 'Honda', color: 'Biru');
-  mobil2.start();
-  print('');
-
-  // ================= 05 - Constructor =================
-  print('05 - Constructor: Membuat objek dengan initial value');
-  Car mobil3 = Car(model: 'Suzuki', color: 'Hitam');
-  print('Mobil3: ${mobil3.model} warna ${mobil3.color}');
-  print('');
-
-  // ================= 06 =================
-  print('06 - Class Mahasiswa');
-  Mahasiswa mhs1 = Mahasiswa('Bagas', '251410003');
-  mhs1.info();
-  print('');
-
-  // ================= 07 =================
-  print('07 - Encapsulation');
-  Person p = Person('Andi');
-  print('Nama awal: ${p.nama}');
-  p.nama = 'Budi';
-  print('Nama baru: ${p.nama}');
-  print('');
-
-  // ================= 08 =================
-  print('08 - This Keyword');
-  Product prod = Product('Laptop');
-  prod.show();
-  print('');
-
-  // ================= 09 =================
-  print('09 - Named Parameter');
-  Produk p1 = Produk(id: 'P01', nama: 'Pulpen');
-  p1.info();
-  print('');
-
-  // ================= 10 =================
-  print('10 - Kesimpulan: OOP mempermudah struktur program.\n');
-
-  // ================= 11 =================
-  print('11 - Class Hewan');
-  Hewan kucing = Hewan('Kucing');
-  Hewan anjing = Hewan('Anjing');
-  kucing.bersuara();
-  anjing.bersuara();
+.content{flex:2;}
+.section{
+    background:rgba(0,0,0,0.85);
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:15px;
+    box-shadow:0 0 20px #ff66cc;
 }
+.section h2{
+    color:#66ccff;
+    margin-bottom:10px;
+}
+.code-box{
+    background:#111;
+    padding:15px;
+    border-radius:10px;
+    border:2px solid #66ccff;
+    margin-top:10px;
+    font-family:monospace;
+    color:#00ffcc;
+}
+button{
+    margin-top:10px;
+    padding:6px 12px;
+    border:none;
+    border-radius:6px;
+    background:linear-gradient(45deg,#ff4da6,#4da6ff);
+    color:white;
+    cursor:pointer;
+}
+.output{
+    margin-top:10px;
+    background:black;
+    padding:10px;
+    border-radius:8px;
+    font-family:monospace;
+    color:lime;
+}
+.comment-box{
+    flex:1;
+    background:rgba(0,0,0,0.9);
+    padding:20px;
+    border-radius:15px;
+}
+input,textarea{
+    width:100%;
+    padding:8px;
+    margin:6px 0;
+    border-radius:6px;
+    border:none;
+}
+.comment-item{
+    background:rgba(255,255,255,0.1);
+    padding:8px;
+    border-radius:8px;
+    margin-top:8px;
+}
+</style>
+</head>
 
+<body>
+
+<header>
+<h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
+<p>Alicia Putri Lestari | NIM: 251410011</p>
+</header>
+
+<div class="container">
+
+<div class="content">
+
+<!-- 01 -->
+<div class="section">
+<h2>01 - Pengertian OOP</h2>
+<p>OOP adalah paradigma pemrograman berbasis object.</p>
+</div>
+
+<!-- 02 -->
+<div class="section">
+<h2>02 - Konsep Dasar</h2>
+<p>Class, Object, Attribute, Method.</p>
+</div>
+
+<!-- TEMPLATE FUNCTION RUN -->
+<script>
+function run(id,text){
+    document.getElementById(id).innerText=text;
+}
+</script>
+
+<!-- 03 -->
+<div class="section">
+<h2>03 - Class Car</h2>
+<div class="code-box">
+class Car { <br>
+&nbsp;&nbsp;start(){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;return "Car started!"; <br>
+&nbsp;&nbsp;} <br>
+}
+</div>
+<button onclick="run('out3','Car started!')">Jalankan</button>
+<div class="output" id="out3"></div>
+</div>
+
+<!-- 04 -->
+<div class="section">
+<h2>04 - Object</h2>
+<div class="code-box">
+let car = new Object();
+</div>
+<button onclick="run('out4','Object berhasil dibuat')">Jalankan</button>
+<div class="output" id="out4"></div>
+</div>
+
+<!-- 05 -->
+<div class="section">
+<h2>05 - Constructor</h2>
+<div class="code-box">
+function Mobil(nama){ <br>
+&nbsp;&nbsp;this.nama = nama; <br>
+}
+</div>
+<button onclick="run('out5','Constructor berjalan')">Jalankan</button>
+<div class="output" id="out5"></div>
+</div>
+
+<!-- 06 -->
+<div class="section">
+<h2>06 - Class Mahasiswa</h2>
+<div class="code-box">
+class Mahasiswa{ <br>
+&nbsp;&nbsp;constructor(nama){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.nama = nama; <br>
+&nbsp;&nbsp;} <br>
+}
+</div>
+<button onclick="run('out6','Mahasiswa dibuat')">Jalankan</button>
+<div class="output" id="out6"></div>
+</div>
+
+<!-- 07 -->
+<div class="section">
+<h2>07 - Encapsulation</h2>
+<div class="code-box">
+class Person{ <br>
+&nbsp;&nbsp;#nama; <br>
+}
+</div>
+<button onclick="run('out7','Encapsulation berhasil')">Jalankan</button>
+<div class="output" id="out7"></div>
+</div>
+
+<!-- 08 -->
+<div class="section">
+<h2>08 - This Keyword</h2>
+<div class="code-box">
+this.nama = "Produk";
+</div>
+<button onclick="run('out8','This keyword berjalan')">Jalankan</button>
+<div class="output" id="out8"></div>
+</div>
+
+<!-- 09 -->
+<div class="section">
+<h2>09 - Parameter</h2>
+<div class="code-box">
+function Produk(id){ return id; }
+</div>
+<button onclick="run('out9','Parameter diterima')">Jalankan</button>
+<div class="output" id="out9"></div>
+</div>
+
+<!-- 10 -->
+<div class="section">
+<h2>10 - Kesimpulan</h2>
+<p>OOP mempermudah struktur program.</p>
+</div>
+
+<!-- 11 -->
+<div class="section">
+<h2>11 - Class Hewan</h2>
+<div class="code-box">
+class Hewan{ <br>
+&nbsp;&nbsp;constructor(nama){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.nama = nama; <br>
+&nbsp;&nbsp;} <br>
+}
+</div>
+<button onclick="run('out11','Hewan bersuara!')">Jalankan</button>
+<div class="output" id="out11"></div>
+</div>
+
+</div>
+
+<!-- COMMENT -->
+<div class="comment-box">
+<h2>Forum Komentar</h2>
+<input type="text" id="nama" placeholder="Nama">
+<textarea id="komentar" rows="3" placeholder="Komentar"></textarea>
+<button onclick="tambahKomentar()">Kirim</button>
+<div id="daftarKomentar"></div>
+</div>
+
+</div>
+
+<script>
+let komentarData = JSON.parse(localStorage.getItem("komentar")) || [];
+
+function renderKomentar(){
+    let c=document.getElementById("daftarKomentar");
+    c.innerHTML="";
+    komentarData.forEach((item,i)=>{
+        let div=document.createElement("div");
+        div.className="comment-item";
+        div.innerHTML=`
+        <strong>${item.nama}</strong><br>
+        ${item.isi}<br>
+        <button onclick="editKomentar(${i})">Edit</button>
+        <button onclick="hapusKomentar(${i})">Hapus</button>
+        `;
+        c.appendChild(div);
+    });
+}
+function tambahKomentar(){
+    let n=document.getElementById("nama").value;
+    let k=document.getElementById("komentar").value;
+    if(n===""||k===""){alert("Isi dulu");return;}
+    komentarData.push({nama:n,isi:k});
+    localStorage.setItem("komentar",JSON.stringify(komentarData));
+    document.getElementById("nama").value="";
+    document.getElementById("komentar").value="";
+    renderKomentar();
+}
+function hapusKomentar(i){
+    komentarData.splice(i,1);
+    localStorage.setItem("komentar",JSON.stringify(komentarData));
+    renderKomentar();
+}
+function editKomentar(i){
+    let baru=prompt("Edit:",komentarData[i].isi);
+    if(baru!==null){
+        komentarData[i].isi=baru;
+        localStorage.setItem("komentar",JSON.stringify(komentarData));
+        renderKomentar();
+    }
+}
+renderKomentar();
+</script>
+
+</body>
+</html>
