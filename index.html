@@ -16,16 +16,43 @@
 body{
     background:linear-gradient(135deg,#ff4da6,#4da6ff);
     color:white;
+    overflow-x:hidden;
 }
 
 /* HEADER */
 header{
     text-align:center;
     padding:40px 20px;
-    background:rgba(0,0,0,0.7);
+    background:rgba(0,0,0,0.75);
+    animation:fadeIn 2s ease-in-out;
 }
 
-/* CONTAINER MAIN */
+header h1{
+    font-size:35px;
+    background:linear-gradient(45deg,#ff99dd,#66ccff);
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:shake 3s infinite alternate;
+}
+
+header p{
+    margin-top:10px;
+    font-weight:bold;
+    color:#fff;
+}
+
+/* Animations */
+@keyframes shake{
+    0%{transform:translateX(-3px);}
+    100%{transform:translateX(3px);}
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* LAYOUT */
 .container{
     display:flex;
     width:95%;
@@ -38,7 +65,35 @@ header{
     flex:2;
 }
 
-/* RIGHT COMMENT */
+.section{
+    background:rgba(0,0,0,0.75);
+    padding:25px;
+    margin-bottom:30px;
+    border-radius:15px;
+    box-shadow:0 0 20px #ff66cc;
+    transition:0.3s;
+}
+
+.section:hover{
+    transform:scale(1.02);
+}
+
+.section h2{
+    margin-bottom:15px;
+    color:#66ccff;
+}
+
+.code-box{
+    background:#111;
+    padding:15px;
+    border-radius:10px;
+    border:2px solid #66ccff;
+    color:#00ffcc;
+    font-family:monospace;
+    overflow-x:auto;
+}
+
+/* COMMENT */
 .comment-box{
     flex:1;
     background:rgba(0,0,0,0.85);
@@ -50,33 +105,6 @@ header{
     top:20px;
 }
 
-/* SECTION */
-.section{
-    background:rgba(0,0,0,0.75);
-    padding:25px;
-    margin-bottom:30px;
-    border-radius:15px;
-    box-shadow:0 0 20px #ff66cc;
-}
-
-.section h2{
-    margin-bottom:15px;
-    color:#66ccff;
-}
-
-/* CODE */
-.code-box{
-    background:#111;
-    padding:15px;
-    margin-top:15px;
-    border-radius:10px;
-    border:2px solid #66ccff;
-    color:#00ffcc;
-    font-family:monospace;
-    overflow-x:auto;
-}
-
-/* FORM */
 .comment-box h2{
     text-align:center;
     margin-bottom:15px;
@@ -93,36 +121,33 @@ input,textarea{
 }
 
 button{
-    width:100%;
-    padding:10px;
+    padding:8px 12px;
     border:none;
-    border-radius:8px;
+    border-radius:6px;
     background:linear-gradient(45deg,#ff4da6,#4da6ff);
     color:white;
-    font-weight:bold;
     cursor:pointer;
-    transition:0.3s;
+    margin-top:5px;
 }
 
 button:hover{
-    transform:scale(1.05);
-}
-
-/* COMMENT LIST */
-.comment-list{
-    margin-top:20px;
+    opacity:0.8;
 }
 
 .comment-item{
     background:rgba(255,255,255,0.1);
     padding:10px;
     border-radius:8px;
-    margin-bottom:10px;
-    border-left:4px solid #ff66cc;
+    margin-top:10px;
 }
 
 .comment-item strong{
     color:#66ccff;
+}
+
+.action-btn{
+    margin-right:5px;
+    font-size:12px;
 }
 </style>
 </head>
@@ -131,36 +156,16 @@ button:hover{
 
 <header>
 <h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
-<p>Muhammad Bagas Putra Andeza | NIM: 251410003</p>
+<p>Alicia Putri Lestari | NIM: 251410011</p>
 </header>
 
 <div class="container">
 
-<!-- LEFT SIDE -->
 <div class="content">
 
 <div class="section">
 <h2>01 - Pengertian OOP</h2>
 <p>OOP adalah paradigma pemrograman berbasis object.</p>
-</div>
-
-<div class="section">
-<h2>02 - Class & Object</h2>
-<p>Class adalah blueprint. Object adalah instance dari class.</p>
-</div>
-
-<div class="section">
-<h2>03 - Class Car</h2>
-<div class="code-box">
-<pre>
-class Car {
-  String? model;
-  void start() {
-    print("Car started!");
-  }
-}
-</pre>
-</div>
 </div>
 
 <div class="section">
@@ -182,40 +187,71 @@ class Hewan {
 
 </div>
 
-<!-- RIGHT SIDE COMMENT -->
 <div class="comment-box">
 <h2>Forum Komentar</h2>
 
 <input type="text" id="nama" placeholder="Nama...">
-<textarea id="komentar" rows="4" placeholder="Tulis komentar..."></textarea>
-<button onclick="kirimKomentar()">Kirim</button>
+<textarea id="komentar" rows="3" placeholder="Tulis komentar..."></textarea>
+<button onclick="tambahKomentar()">Kirim</button>
 
-<div class="comment-list" id="daftarKomentar"></div>
+<div id="daftarKomentar"></div>
 </div>
 
 </div>
 
 <script>
-function kirimKomentar(){
-    let nama = document.getElementById("nama").value;
-    let komentar = document.getElementById("komentar").value;
+let komentarData = JSON.parse(localStorage.getItem("komentar")) || [];
 
-    if(nama === "" || komentar === ""){
-        alert("Isi dulu nama dan komentar!");
+function renderKomentar(){
+    let container = document.getElementById("daftarKomentar");
+    container.innerHTML = "";
+
+    komentarData.forEach((item,index)=>{
+        let div = document.createElement("div");
+        div.className="comment-item";
+        div.innerHTML = `
+            <strong>${item.nama}</strong><br>
+            <span>${item.isi}</span><br>
+            <button class="action-btn" onclick="editKomentar(${index})">Edit</button>
+            <button class="action-btn" onclick="hapusKomentar(${index})">Hapus</button>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function tambahKomentar(){
+    let nama = document.getElementById("nama").value;
+    let isi = document.getElementById("komentar").value;
+
+    if(nama===""||isi===""){
+        alert("Isi dulu semuanya!");
         return;
     }
 
-    let list = document.getElementById("daftarKomentar");
+    komentarData.push({nama:nama,isi:isi});
+    localStorage.setItem("komentar",JSON.stringify(komentarData));
 
-    let item = document.createElement("div");
-    item.className = "comment-item";
-    item.innerHTML = "<strong>" + nama + "</strong><br>" + komentar;
-
-    list.prepend(item);
-
-    document.getElementById("nama").value = "";
-    document.getElementById("komentar").value = "";
+    document.getElementById("nama").value="";
+    document.getElementById("komentar").value="";
+    renderKomentar();
 }
+
+function hapusKomentar(index){
+    komentarData.splice(index,1);
+    localStorage.setItem("komentar",JSON.stringify(komentarData));
+    renderKomentar();
+}
+
+function editKomentar(index){
+    let baru = prompt("Edit komentar:",komentarData[index].isi);
+    if(baru!==null){
+        komentarData[index].isi=baru;
+        localStorage.setItem("komentar",JSON.stringify(komentarData));
+        renderKomentar();
+    }
+}
+
+renderKomentar();
 </script>
 
 </body>
