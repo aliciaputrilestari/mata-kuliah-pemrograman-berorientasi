@@ -6,104 +6,123 @@
 <title>OOP Dart</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
-body {
-    background: linear-gradient(135deg, #ff4da6, #4da6ff);
-    color: white;
+body{
+    background:linear-gradient(135deg,#ff4da6,#4da6ff);
+    color:white;
 }
 
 /* HEADER */
-header {
-    text-align: center;
-    padding: 40px 20px;
-    background: rgba(0,0,0,0.6);
+header{
+    text-align:center;
+    padding:40px 20px;
+    background:rgba(0,0,0,0.7);
 }
 
-header h1 {
-    font-size: 40px;
-    letter-spacing: 3px;
+/* CONTAINER MAIN */
+.container{
+    display:flex;
+    width:95%;
+    margin:40px auto;
+    gap:30px;
 }
 
-header p {
-    margin-top: 10px;
-    color: #ddd;
+/* LEFT CONTENT */
+.content{
+    flex:2;
+}
+
+/* RIGHT COMMENT */
+.comment-box{
+    flex:1;
+    background:rgba(0,0,0,0.85);
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 25px #66ccff;
+    height:fit-content;
+    position:sticky;
+    top:20px;
 }
 
 /* SECTION */
-.section {
-    width: 85%;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 15px;
-    background: rgba(0,0,0,0.75);
-    box-shadow: 0 0 20px #ff66cc;
+.section{
+    background:rgba(0,0,0,0.75);
+    padding:25px;
+    margin-bottom:30px;
+    border-radius:15px;
+    box-shadow:0 0 20px #ff66cc;
 }
 
-.section h2 {
-    margin-bottom: 15px;
-    color: #66ccff;
+.section h2{
+    margin-bottom:15px;
+    color:#66ccff;
 }
 
-.section p {
-    line-height: 1.6;
+/* CODE */
+.code-box{
+    background:#111;
+    padding:15px;
+    margin-top:15px;
+    border-radius:10px;
+    border:2px solid #66ccff;
+    color:#00ffcc;
+    font-family:monospace;
+    overflow-x:auto;
 }
 
-/* CODE BOX */
-.code-box {
-    background: #111;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    border: 2px solid #66ccff;
-    color: #00ffcc;
-    font-family: monospace;
-    overflow-x: auto;
+/* FORM */
+.comment-box h2{
+    text-align:center;
+    margin-bottom:15px;
+    color:#ff99dd;
 }
 
-/* COMMENT */
-.comment-box {
-    width: 85%;
-    margin: 50px auto;
-    padding: 30px;
-    border-radius: 15px;
-    background: rgba(0,0,0,0.85);
-    box-shadow: 0 0 20px #66ccff;
+input,textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:8px;
+    outline:none;
 }
 
-.comment-box h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #ff99dd;
+button{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient(45deg,#ff4da6,#4da6ff);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: none;
-    outline: none;
+button:hover{
+    transform:scale(1.05);
 }
 
-button {
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(45deg, #ff4da6, #4da6ff);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+/* COMMENT LIST */
+.comment-list{
+    margin-top:20px;
 }
 
-button:hover {
-    transform: scale(1.05);
+.comment-item{
+    background:rgba(255,255,255,0.1);
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:10px;
+    border-left:4px solid #ff66cc;
+}
+
+.comment-item strong{
+    color:#66ccff;
 }
 </style>
 </head>
@@ -111,165 +130,49 @@ button:hover {
 <body>
 
 <header>
-    <h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
-    <p>Muhammad Bagas Putra Andeza | NIM: 251410003</p>
+<h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
+<p>Muhammad Bagas Putra Andeza | NIM: 251410003</p>
 </header>
 
-<!-- 01 -->
+<div class="container">
+
+<!-- LEFT SIDE -->
+<div class="content">
+
 <div class="section">
-    <h2>01 - Pengertian OOP</h2>
-    <p>
-        OOP adalah paradigma pemrograman yang berfokus pada objek.
-        Setiap objek memiliki data (state) dan perilaku (behavior).
-    </p>
+<h2>01 - Pengertian OOP</h2>
+<p>OOP adalah paradigma pemrograman berbasis object.</p>
 </div>
 
-<!-- 02 -->
 <div class="section">
-    <h2>02 - Konsep Dasar</h2>
-    <p>
-        Class adalah blueprint. Object adalah instance.
-        Attribute adalah data. Method adalah fungsi dalam class.
-    </p>
+<h2>02 - Class & Object</h2>
+<p>Class adalah blueprint. Object adalah instance dari class.</p>
 </div>
 
-<!-- 03 -->
 <div class="section">
-    <h2>03 - Contoh Class Car</h2>
+<h2>03 - Class Car</h2>
 <div class="code-box">
 <pre>
 class Car {
   String? model;
-  String? color;
-
   void start() {
     print("Car started!");
   }
-
-  void stop() {
-    print("Car stopped!");
-  }
 }
 </pre>
 </div>
 </div>
 
-<!-- 04 -->
 <div class="section">
-    <h2>04 - Object Instantiation</h2>
+<h2>11 - Class Hewan</h2>
 <div class="code-box">
-<pre>
-void main() {
-  Car myCar = Car();
-  myCar.model = "Sedan";
-  myCar.color = "Merah";
-  myCar.start();
-}
-</pre>
-</div>
-</div>
-
-<!-- 05 -->
-<div class="section">
-    <h2>05 - Constructor</h2>
-<div class="code-box">
-<pre>
-class Car {
-  String model;
-  String color;
-
-  Car(this.model, this.color);
-}
-</pre>
-</div>
-</div>
-
-<!-- 06 -->
-<div class="section">
-    <h2>06 - Class Mahasiswa</h2>
-<div class="code-box">
-<pre>
-class Mahasiswa {
-  String nama;
-  String nim;
-  double ipk;
-
-  Mahasiswa(this.nama, this.nim, this.ipk);
-}
-</pre>
-</div>
-</div>
-
-<!-- 07 -->
-<div class="section">
-    <h2>07 - Encapsulation</h2>
-<div class="code-box">
-<pre>
-class Person {
-  String _nama;
-
-  Person(this._nama);
-
-  String get nama => _nama;
-  set nama(String value) => _nama = value;
-}
-</pre>
-</div>
-</div>
-
-<!-- 08 -->
-<div class="section">
-    <h2>08 - This Keyword</h2>
-<div class="code-box">
-<pre>
-class Product {
-  String nama;
-
-  Product(this.nama);
-}
-</pre>
-</div>
-</div>
-
-<!-- 09 -->
-<div class="section">
-    <h2>09 - Named Parameter</h2>
-<div class="code-box">
-<pre>
-class Produk {
-  final String id;
-  final String nama;
-
-  Produk({
-    required this.id,
-    required this.nama,
-  });
-}
-</pre>
-</div>
-</div>
-
-<!-- 10 -->
-<div class="section">
-    <h2>10 - Kesimpulan</h2>
-    <p>
-        OOP mempermudah pengelolaan kode dengan konsep class dan object.
-        Constructor membantu inisialisasi data.
-        Encapsulation menjaga keamanan data.
-    </p>
-</div>
-
-<!-- 11 -->
-<div class="section" style="box-shadow: 0 0 25px #ff66cc, 0 0 40px #66ccff;">
-    <h2 style="color:#ff99dd;">11 - Class Hewan</h2>
-<div class="code-box" style="border:2px solid #ff99dd; color:#66ccff;">
 <pre>
 class Hewan {
   String nama;
 
   Hewan(this.nama);
 
-  void bersuara() {
+  void bersuara(){
     print("$nama sedang bersuara!");
   }
 }
@@ -277,13 +180,43 @@ class Hewan {
 </div>
 </div>
 
-<!-- COMMENT -->
-<div class="comment-box">
-    <h2>Forum Komentar</h2>
-    <input type="text" placeholder="Nama...">
-    <textarea rows="4" placeholder="Tulis komentar..."></textarea>
-    <button>Kirim</button>
 </div>
+
+<!-- RIGHT SIDE COMMENT -->
+<div class="comment-box">
+<h2>Forum Komentar</h2>
+
+<input type="text" id="nama" placeholder="Nama...">
+<textarea id="komentar" rows="4" placeholder="Tulis komentar..."></textarea>
+<button onclick="kirimKomentar()">Kirim</button>
+
+<div class="comment-list" id="daftarKomentar"></div>
+</div>
+
+</div>
+
+<script>
+function kirimKomentar(){
+    let nama = document.getElementById("nama").value;
+    let komentar = document.getElementById("komentar").value;
+
+    if(nama === "" || komentar === ""){
+        alert("Isi dulu nama dan komentar!");
+        return;
+    }
+
+    let list = document.getElementById("daftarKomentar");
+
+    let item = document.createElement("div");
+    item.className = "comment-item";
+    item.innerHTML = "<strong>" + nama + "</strong><br>" + komentar;
+
+    list.prepend(item);
+
+    document.getElementById("nama").value = "";
+    document.getElementById("komentar").value = "";
+}
+</script>
 
 </body>
 </html>
