@@ -1,166 +1,155 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOP Dart</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #ff4da6, #4da6ff);
-    color: white;
-}
-
-/* ===== HEADER ===== */
-header {
-    text-align: center;
-    padding: 40px 20px;
-    background: rgba(0,0,0,0.6);
-}
-
-header h1 {
-    font-size: 40px;
-    letter-spacing: 3px;
-    color: #ffffff;
-}
-
-header p {
-    margin-top: 10px;
-    color: #dcdcdc;
-}
-
-/* ===== SECTION ===== */
-.section {
-    width: 85%;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 15px;
-    background: rgba(0,0,0,0.7);
-    box-shadow: 0 0 20px #ff66cc;
-}
-
-.section h2 {
-    margin-bottom: 15px;
-    color: #66ccff;
-}
-
-.section p {
-    line-height: 1.6;
-}
-
-/* ===== CODE BOX ===== */
-.code-box {
-    background: #111;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    border: 2px solid #66ccff;
-    color: #00ffcc;
-    font-family: monospace;
-    overflow-x: auto;
-}
-
-/* ===== COMMENT FORM ===== */
-.comment-box {
-    width: 85%;
-    margin: 50px auto;
-    padding: 30px;
-    border-radius: 15px;
-    background: rgba(0,0,0,0.8);
-    box-shadow: 0 0 20px #66ccff;
-}
-
-.comment-box h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #ff99dd;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-}
-
-button {
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(45deg, #ff4da6, #4da6ff);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
-    <p>Muhammad Bagas Putra Andeza | NIM: 251410003</p>
-</header>
-
+<!-- 04 - Object Instantiation -->
 <div class="section">
-    <h2>01 - Pengertian OOP</h2>
+    <h2>04 - Object Instantiation</h2>
     <p>
-        Object Oriented Programming (OOP) adalah paradigma pemrograman yang
-        berfokus pada objek sebagai unit utama. Setiap objek memiliki state
-        (data) dan behavior (perilaku).
+        Setelah class dibuat, kita bisa membuat object (instance) dari class tersebut.
     </p>
+
+<div class="code-box">
+<pre>
+void main() {
+  Car myCar = Car();
+  myCar.model = "Sedan";
+  myCar.color = "Merah";
+
+  myCar.start();
+  myCar.stop();
+}
+</pre>
+</div>
 </div>
 
+<!-- 05 - Constructor -->
 <div class="section">
-    <h2>02 - Konsep Dasar</h2>
+    <h2>05 - Constructor</h2>
     <p>
-        Class adalah blueprint untuk membuat objek. Object adalah instance
-        dari class. Attribute adalah data dalam class. Method adalah fungsi
-        dalam class.
+        Constructor adalah method khusus yang otomatis dipanggil saat object dibuat.
     </p>
-</div>
-
-<div class="section">
-    <h2>03 - Contoh Class Sederhana (Car)</h2>
 
 <div class="code-box">
 <pre>
 class Car {
-  String? model;
-  String? color;
+  String model;
+  String color;
 
-  void start() {
-    print('Car started!');
-  }
+  Car(this.model, this.color);
+}
+</pre>
+</div>
+</div>
 
-  void stop() {
-    print('Car stopped!');
+<!-- 06 - Practice Mahasiswa -->
+<div class="section">
+    <h2>06 - Practice: Class Mahasiswa</h2>
+
+<div class="code-box">
+<pre>
+class Mahasiswa {
+  String nama;
+  String nim;
+  double ipk;
+
+  Mahasiswa(this.nama, this.nim, this.ipk);
+
+  void tampilkanData() {
+    print("Nama: $nama | NIM: $nim | IPK: $ipk");
   }
 }
 </pre>
 </div>
 </div>
 
-<div class="comment-box">
-    <h2>Forum Komentar</h2>
-    <input type="text" placeholder="Nama...">
-    <textarea rows="4" placeholder="Tulis komentar..."></textarea>
-    <button>Kirim</button>
+<!-- 07 - Encapsulation -->
+<div class="section">
+    <h2>07 - Encapsulation</h2>
+
+<div class="code-box">
+<pre>
+class Person {
+  String _nama;
+  int umur;
+
+  Person(this._nama, this.umur);
+
+  String get nama => _nama;
+  set nama(String value) {
+    _nama = value;
+  }
+}
+</pre>
+</div>
 </div>
 
-</body>
-</html>
+<!-- 08 - This Keyword -->
+<div class="section">
+    <h2>08 - This Keyword</h2>
+
+<div class="code-box">
+<pre>
+class Product {
+  String nama;
+
+  Product(this.nama);
+}
+</pre>
+</div>
+</div>
+
+<!-- 09 - Named Parameter -->
+<div class="section">
+    <h2>09 - Named Parameter</h2>
+
+<div class="code-box">
+<pre>
+class Produk {
+  final String id;
+  final String nama;
+  final double harga;
+
+  Produk({
+    required this.id,
+    required this.nama,
+    required this.harga,
+  });
+}
+</pre>
+</div>
+</div>
+
+<!-- 10 - Kesimpulan -->
+<div class="section">
+    <h2>10 - Kesimpulan</h2>
+    <p>
+        OOP membantu pengelolaan kode dengan konsep class dan object.
+        Constructor mempermudah inisialisasi data.
+        Encapsulation menjaga keamanan data.
+        Dart mendukung OOP secara penuh.
+    </p>
+</div>
+
+<!-- 11 - Class Hewan -->
+<div class="section" style="box-shadow: 0 0 25px #ff66cc, 0 0 40px #66ccff;">
+    <h2 style="color:#ff99dd;">11 - Class Hewan</h2>
+    <p>
+        Berikut contoh class Hewan dengan atribut nama dan method bersuara.
+    </p>
+
+<div class="code-box" style="border:2px solid #ff99dd; color:#66ccff;">
+<pre>
+class Hewan {
+  String nama;
+
+  Hewan(this.nama);
+
+  void bersuara() {
+    print("$nama sedang bersuara!");
+  }
+}
+
+void main() {
+  Hewan kucing = Hewan("Kucing");
+  kucing.bersuara();
+}
+</pre>
+</div>
+</div>
