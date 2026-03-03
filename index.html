@@ -1,6 +1,5 @@
-// OOP Dart 01 - 11
-// Nama: Alicia Putri Lestari
-// NIM: 251410011
+// OOP Dart - 01 sampai 11
+// Nama: Alicia Putri Lestari | NIM: 251410011
 
 // ================= 03 - Class Car =================
 class Car {
@@ -70,36 +69,30 @@ class Hewan {
   Hewan(this.nama);
 
   void bersuara() {
-    print('$nama sedang bersuara...');
-    print('Sound Protocol: [DATA_SOUND_GENERATED]');
+    print('$nama sedang bersuara!');
   }
 }
 
 void main() {
-
-  // ================= 01 =================
-  print('01 - Pengertian OOP');
-  print('OOP adalah paradigma pemrograman berbasis object.\n');
-
-  // ================= 02 =================
-  print('02 - Konsep Dasar OOP');
-  print('Class, Object, Attribute, Method.\n');
+  // ================= 01 & 02 =================
+  print('01 - Pengertian OOP: Paradigma berbasis object.');
+  print('02 - Konsep Dasar: Class, Object, Attribute, Method.\n');
 
   // ================= 03 =================
-  print('03 - Class Car');
+  print('03 - Contoh Class Car');
   Car mobil1 = Car(model: 'Toyota', color: 'Merah');
   mobil1.start();
   mobil1.stop();
   print('');
 
-  // ================= 04 =================
-  print('04 - Object');
+  // ================= 04 - Object =================
+  print('04 - Object: Instance dari class Car');
   Car mobil2 = Car(model: 'Honda', color: 'Biru');
   mobil2.start();
   print('');
 
-  // ================= 05 =================
-  print('05 - Constructor');
+  // ================= 05 - Constructor =================
+  print('05 - Constructor: Membuat objek dengan initial value');
   Car mobil3 = Car(model: 'Suzuki', color: 'Hitam');
   print('Mobil3: ${mobil3.model} warna ${mobil3.color}');
   print('');
@@ -131,12 +124,12 @@ void main() {
   print('');
 
   // ================= 10 =================
-  print('10 - Kesimpulan');
-  print('OOP mempermudah struktur dan pengelolaan program.\n');
+  print('10 - Kesimpulan: OOP mempermudah struktur program.\n');
 
   // ================= 11 =================
   print('11 - Class Hewan');
-  var myPet = Hewan('Kucing');
-  print('Nama Hewan: ${myPet.nama}');
-  myPet.bersuara();
+  Hewan kucing = Hewan('Kucing');
+  Hewan anjing = Hewan('Anjing');
+  kucing.bersuara();
+  anjing.bersuara();
 }
