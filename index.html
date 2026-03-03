@@ -1,126 +1,156 @@
-// OOP Dart 01-11
-// Nama: Alicia Putri Lestari | NIM: 251410011
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOP Dart Interaktif</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:linear-gradient(135deg,#ff4da6,#4da6ff);color:white;}
+header{text-align:center;padding:40px 20px;background:rgba(0,0,0,0.75);}
+header h1{font-size:35px;background:linear-gradient(45deg,#ff99dd,#66ccff);-webkit-background-clip:text;color:transparent;animation:goyang 3s infinite alternate;}
+@keyframes goyang{from{transform:translateX(-4px);}to{transform:translateX(4px);}}
+header p{margin-top:10px;font-weight:bold;}
+.container{display:flex;width:95%;margin:40px auto;gap:30px;}
+.content{flex:2;}
+.section{background:rgba(0,0,0,0.8);padding:20px;margin-bottom:20px;border-radius:15px;box-shadow:0 0 20px #ff66cc;transition:0.3s;}
+.section:hover{transform:scale(1.02);box-shadow:0 0 25px #66ccff;}
+.section h2{margin-bottom:10px;color:#66ccff;}
+.code-box{background:#111;padding:15px;border-radius:10px;border:2px solid #66ccff;color:#00ffcc;font-family:monospace;overflow-x:auto;margin-top:10px;}
+button.run-btn{padding:5px 10px;margin-top:5px;border:none;border-radius:5px;background:linear-gradient(45deg,#ff99dd,#66ccff);cursor:pointer;color:white;}
+.output-box{background:#222;color:#0f0;padding:10px;margin-top:10px;border-radius:8px;min-height:40px;font-family:monospace;white-space:pre-wrap;}
+.comment-box{flex:1;background:linear-gradient(145deg,#ff4da6,#66ccff);padding:20px;border-radius:15px;box-shadow:0 0 25px #66ccff;position:sticky;top:20px;}
+.comment-box h2{text-align:center;margin-bottom:15px;color:white;}
+input,textarea{width:100%;padding:8px;margin:5px 0;border:none;border-radius:8px;}
+.comment-item{background:rgba(255,255,255,0.15);padding:8px;border-radius:8px;margin-top:8px;}
+.comment-item strong{color:#fff;}
+.comment-item button{padding:3px 6px;margin:2px;font-size:12px;}
+</style>
+</head>
+<body>
 
-// ================= 03 - Class Car =================
-class Car {
-  String model;
-  String color;
+<header>
+<h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
+<p>Alicia Putri Lestari | NIM: 251410011</p>
+</header>
 
-  Car({required this.model, required this.color});
+<div class="container">
+<div class="content">
 
-  void start() {
-    print('$model berwarna $color mulai berjalan!');
-  }
+<!-- 03 - Object -->
+<div class="section">
+<h2>03 - Object</h2>
+<div class="code-box">class Car {<br> model; color;<br> void start(){console.log('Car started');}<br>}</div>
+<button class="run-btn" onclick="run03()">Run</button>
+<div class="output-box" id="out03"></div>
+</div>
 
-  void stop() {
-    print('$model berhenti.');
-  }
+<!-- 04 - Attribute -->
+<div class="section">
+<h2>04 - Attribute</h2>
+<div class="code-box">let car = {model:'Toyota',color:'Merah'};</div>
+<button class="run-btn" onclick="run04()">Run</button>
+<div class="output-box" id="out04"></div>
+</div>
+
+<!-- 05 - Method -->
+<div class="section">
+<h2>05 - Method</h2>
+<div class="code-box">function startCar(){return 'Mobil mulai berjalan';}</div>
+<button class="run-btn" onclick="run05()">Run</button>
+<div class="output-box" id="out05"></div>
+</div>
+
+<!-- 06 - Constructor -->
+<div class="section">
+<h2>06 - Constructor</h2>
+<div class="code-box">class Mobil { constructor(nama){this.nama=nama;} }</div>
+<button class="run-btn" onclick="run06()">Run</button>
+<div class="output-box" id="out06"></div>
+</div>
+
+<!-- 07 - Encapsulation -->
+<div class="section">
+<h2>07 - Encapsulation</h2>
+<div class="code-box">class Person { #nama; constructor(nama){this.#nama=nama;} }</div>
+<button class="run-btn" onclick="run07()">Run</button>
+<div class="output-box" id="out07"></div>
+</div>
+
+<!-- 08 - This Keyword -->
+<div class="section">
+<h2>08 - This Keyword</h2>
+<div class="code-box">class Product { constructor(nama){this.nama=nama;} }</div>
+<button class="run-btn" onclick="run08()">Run</button>
+<div class="output-box" id="out08"></div>
+</div>
+
+<!-- 11 - Class Hewan -->
+<div class="section">
+<h2>11 - Class Hewan</h2>
+<div class="code-box">class Hewan { constructor(nama){this.nama=nama;} bersuara(){return this.nama+' bersuara';} }</div>
+<button class="run-btn" onclick="run11()">Run</button>
+<div class="output-box" id="out11"></div>
+</div>
+
+</div>
+
+<!-- Comment Box -->
+<div class="comment-box">
+<h2>Forum Komentar</h2>
+<input type="text" id="nama" placeholder="Nama...">
+<textarea id="komentar" rows="3" placeholder="Tulis komentar..."></textarea>
+<button onclick="tambahKomentar()">Kirim</button>
+<div id="daftarKomentar"></div>
+</div>
+
+</div>
+
+<script>
+// ================== Run Functions ==================
+function run03(){ document.getElementById('out03').innerText = 'Membuat object Car...\nOutput: Car started!'; }
+function run04(){ document.getElementById('out04').innerText = 'Attribute: model=Toyota, color=Merah'; }
+function run05(){ document.getElementById('out05').innerText = 'Method startCar() dipanggil → Mobil mulai berjalan'; }
+function run06(){ document.getElementById('out06').innerText = 'Mobil dibuat dengan nama: Avanza'; }
+function run07(){ document.getElementById('out07').innerText = 'Encapsulation: Nama private diubah'; }
+function run08(){ document.getElementById('out08').innerText = 'This keyword: Product.nama = Laptop'; }
+function run11(){ document.getElementById('out11').innerText = 'Kucing bersuara\nAnjing bersuara'; }
+
+// ================== Comment ==================
+let komentarData = JSON.parse(localStorage.getItem("komentar"))||[];
+
+function renderKomentar(){
+    let container=document.getElementById("daftarKomentar");
+    container.innerHTML="";
+    komentarData.forEach((item,index)=>{
+        let div=document.createElement("div");
+        div.className="comment-item";
+        div.innerHTML=`
+            <strong>${item.nama}</strong><br>
+            ${item.isi}<br>
+            <button onclick="editKomentar(${index})">Edit</button>
+            <button onclick="hapusKomentar(${index})">Hapus</button>
+        `;
+        container.appendChild(div);
+    });
 }
 
-// ================= 06 - Class Mahasiswa =================
-class Mahasiswa {
-  String nama;
-  String nim;
-
-  Mahasiswa(this.nama, this.nim);
-
-  void info() {
-    print('Nama: $nama | NIM: $nim');
-  }
+function tambahKomentar(){
+    let nama=document.getElementById("nama").value;
+    let isi=document.getElementById("komentar").value;
+    if(nama===""||isi===""){alert("Isi dulu!"); return;}
+    komentarData.push({nama:nama,isi:isi});
+    localStorage.setItem("komentar",JSON.stringify(komentarData));
+    document.getElementById("nama").value="";
+    document.getElementById("komentar").value="";
+    renderKomentar();
 }
 
-// ================= 07 - Encapsulation =================
-class Person {
-  String _nama;
+function hapusKomentar(index){ komentarData.splice(index,1); localStorage.setItem("komentar",JSON.stringify(komentarData)); renderKomentar();}
+function editKomentar(index){ let baru=prompt("Edit komentar:",komentarData[index].isi); if(baru!==null){komentarData[index].isi=baru; localStorage.setItem("komentar",JSON.stringify(komentarData)); renderKomentar();} }
 
-  Person(this._nama);
+renderKomentar();
+</script>
 
-  String get nama => _nama;
-  set nama(String newName) => _nama = newName;
-}
-
-// ================= 08 - This Keyword =================
-class Product {
-  String nama;
-
-  Product(this.nama);
-
-  void show() {
-    print('Produk: $nama');
-  }
-}
-
-// ================= 09 - Named Parameter =================
-class Produk {
-  final String id;
-  final String nama;
-
-  Produk({required this.id, required this.nama});
-
-  void info() {
-    print('ID: $id | Nama: $nama');
-  }
-}
-
-// ================= 11 - Class Hewan =================
-class Hewan {
-  String nama;
-
-  Hewan(this.nama);
-
-  void bersuara() {
-    print('$nama sedang bersuara!');
-  }
-}
-
-// ================= MAIN =================
-void main() {
-  // 03 - Car
-  print('03 - Class Car');
-  var car1 = Car(model: 'Toyota', color: 'Merah');
-  car1.start();
-  car1.stop();
-
-  // 04 - Object
-  print('\n04 - Object (Instance dari Car)');
-  var car2 = Car(model: 'Honda', color: 'Biru');
-  car2.start();
-
-  // 05 - Constructor
-  print('\n05 - Constructor');
-  var car3 = Car(model: 'Suzuki', color: 'Hitam');
-  print('Mobil3: ${car3.model} warna ${car3.color}');
-
-  // 06 - Mahasiswa
-  print('\n06 - Class Mahasiswa');
-  var mhs = Mahasiswa('Bagas', '251410003');
-  mhs.info();
-
-  // 07 - Encapsulation
-  print('\n07 - Encapsulation');
-  var p = Person('Andi');
-  print('Nama awal: ${p.nama}');
-  p.nama = 'Budi';
-  print('Nama baru: ${p.nama}');
-
-  // 08 - This Keyword
-  print('\n08 - This Keyword');
-  var prod = Product('Laptop');
-  prod.show();
-
-  // 09 - Named Parameter
-  print('\n09 - Named Parameter');
-  var prd = Produk(id: 'P01', nama: 'Pulpen');
-  prd.info();
-
-  // 10 - Kesimpulan
-  print('\n10 - Kesimpulan');
-  print('OOP mempermudah struktur program dengan object');
-
-  // 11 - Hewan
-  print('\n11 - Class Hewan');
-  var kucing = Hewan('Kucing');
-  var anjing = Hewan('Anjing');
-  kucing.bersuara();
-  anjing.bersuara();
-}
+</body>
+</html>
