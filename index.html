@@ -3,321 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOP Dart</title>
+<title>Project DartPad</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-body{
-    background:linear-gradient(135deg,#ff4da6,#4da6ff);
-    color:white;
+body {
+  background: linear-gradient(-45deg, #ff4ecd, #6a5cff, #00c3ff, #ff6ec7);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-/* HEADER */
-header{
-    text-align:center;
-    padding:40px 20px;
-    background:rgba(0,0,0,0.75);
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
-header h1{
-    font-size:35px;
-    background:linear-gradient(45deg,#ff99dd,#66ccff);
-    -webkit-background-clip:text;
-    color:transparent;
-    animation:goyang 3s infinite alternate;
+.container {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
 }
 
-@keyframes goyang{
-    from{transform:translateX(-4px);}
-    to{transform:translateX(4px);}
+h1 {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  background: linear-gradient(to right, #fff, #ffb3f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-header p{
-    margin-top:10px;
-    font-weight:bold;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-/* LAYOUT */
-.container{
-    display:flex;
-    width:95%;
-    margin:40px auto;
-    gap:30px;
+.card {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  transition: 0.4s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* CONTENT */
-.content{
-    flex:2;
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(255, 0, 200, 0.4);
 }
 
-.section{
-    background:rgba(0,0,0,0.8);
-    padding:25px;
-    margin-bottom:25px;
-    border-radius:15px;
-    box-shadow:0 0 20px #ff66cc;
-    transition:0.3s;
+.card h3 {
+  margin-bottom: 15px;
+  color: #ff9afc;
 }
 
-.section:hover{
-    transform:scale(1.02);
-    box-shadow:0 0 25px #66ccff;
+.card p {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  opacity: 0.8;
 }
 
-.section h2{
-    margin-bottom:15px;
-    color:#66ccff;
+.btn {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff4ecd, #6a5cff);
+  color: white;
+  transition: 0.3s;
 }
 
-.code-box{
-    background:#111;
-    padding:15px;
-    border-radius:10px;
-    border:2px solid #66ccff;
-    color:#00ffcc;
-    font-family:monospace;
-    overflow-x:auto;
-    margin-top:10px;
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ff4ecd;
 }
 
-/* COMMENT */
-.comment-box{
-    flex:1;
-    background:rgba(0,0,0,0.9);
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 0 25px #66ccff;
-    height:fit-content;
-    position:sticky;
-    top:20px;
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
 }
 
-.comment-box h2{
-    text-align:center;
-    margin-bottom:15px;
-    color:#ff99dd;
+.modal-content {
+  width: 90%;
+  height: 80%;
+  background: #111;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
 }
 
-input,textarea{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border:none;
-    border-radius:8px;
+.modal iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
-button{
-    padding:8px 12px;
-    border:none;
-    border-radius:6px;
-    background:linear-gradient(45deg,#ff4da6,#4da6ff);
-    color:white;
-    cursor:pointer;
-    margin-top:5px;
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
 }
 
-.comment-item{
-    background:rgba(255,255,255,0.1);
-    padding:10px;
-    border-radius:8px;
-    margin-top:10px;
-}
-
-.comment-item strong{
-    color:#66ccff;
+@media(max-width:600px){
+  h1{
+    font-size: 1.8rem;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>OOP DART - OBJECT ORIENTED PROGRAMMING</h1>
-<p>Alicia Putri Lestari | NIM: 251410011</p>
-</header>
-
 <div class="container">
+  <h1>Project DartPad Saya</h1>
 
-<div class="content">
+  <div class="grid">
 
-<!-- 01 -->
-<div class="section">
-<h2>01 - Pengertian OOP</h2>
-<p>OOP adalah paradigma pemrograman berbasis object.</p>
+    <div class="card">
+      <h3>Program 1</h3>
+      <p>Latihan Dart dasar dengan output sederhana.</p>
+      <button class="btn" onclick="openModal('https://dartpad.dev/f7840a92c93fe8f3ca217d8aa5d35f24')">
+        Run Code
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Program 2</h3>
+      <p>Program percabangan dan perulangan.</p>
+      <button class="btn" onclick="openModal('https://dartpad.dev/aa646ee1837e770a7dd094803352a044')">
+        Run Code
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Program 3</h3>
+      <p>Latihan OOP dan fungsi dalam Dart.</p>
+      <button class="btn" onclick="openModal('https://dartpad.dev/b52bd402da820a8ae6d046d1766c076b')">
+        Run Code
+      </button>
+    </div>
+
+  </div>
 </div>
 
-<!-- 02 -->
-<div class="section">
-<h2>02 - Class</h2>
-<p>Class adalah blueprint untuk membuat object.</p>
-</div>
-
-<!-- 03 -->
-<div class="section">
-<h2>03 - Object</h2>
-<p>Object adalah instance dari class.</p>
-</div>
-
-<!-- 04 -->
-<div class="section">
-<h2>04 - Attribute</h2>
-<p>Attribute adalah data yang dimiliki class.</p>
-</div>
-
-<!-- 05 -->
-<div class="section">
-<h2>05 - Method</h2>
-<p>Method adalah fungsi dalam class.</p>
-</div>
-
-<!-- 06 -->
-<div class="section">
-<h2>06 - Constructor</h2>
-<div class="code-box">
-<pre>
-class Mobil{
-  String nama;
-  Mobil(this.nama);
-}
-</pre>
-</div>
-</div>
-
-<!-- 07 -->
-<div class="section">
-<h2>07 - Encapsulation</h2>
-<div class="code-box">
-<pre>
-class Person{
-  String _nama;
-  Person(this._nama);
-}
-</pre>
-</div>
-</div>
-
-<!-- 08 -->
-<div class="section">
-<h2>08 - This Keyword</h2>
-<div class="code-box">
-<pre>
-class Product{
-  String nama;
-  Product(this.nama);
-}
-</pre>
-</div>
-</div>
-
-<!-- 09 -->
-<div class="section">
-<h2>09 - Named Parameter</h2>
-<div class="code-box">
-<pre>
-class Produk{
-  final String id;
-  Produk({required this.id});
-}
-</pre>
-</div>
-</div>
-
-<!-- 10 -->
-<div class="section">
-<h2>10 - Kesimpulan</h2>
-<p>OOP mempermudah pengelolaan program dengan konsep object.</p>
-</div>
-
-<!-- 11 -->
-<div class="section">
-<h2>11 - Class Hewan</h2>
-<div class="code-box">
-<pre>
-class Hewan{
-  String nama;
-  Hewan(this.nama);
-
-  void bersuara(){
-    print("$nama bersuara");
-  }
-}
-</pre>
-</div>
-</div>
-
-</div>
-
-<!-- COMMENT -->
-<div class="comment-box">
-<h2>Forum Komentar</h2>
-
-<input type="text" id="nama" placeholder="Nama...">
-<textarea id="komentar" rows="3" placeholder="Tulis komentar..."></textarea>
-<button onclick="tambahKomentar()">Kirim</button>
-
-<div id="daftarKomentar"></div>
-</div>
-
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">✖</span>
+    <iframe id="frame"></iframe>
+  </div>
 </div>
 
 <script>
-let komentarData = JSON.parse(localStorage.getItem("komentar")) || [];
-
-function renderKomentar(){
-    let container=document.getElementById("daftarKomentar");
-    container.innerHTML="";
-    komentarData.forEach((item,index)=>{
-        let div=document.createElement("div");
-        div.className="comment-item";
-        div.innerHTML=`
-            <strong>${item.nama}</strong><br>
-            ${item.isi}<br>
-            <button onclick="editKomentar(${index})">Edit</button>
-            <button onclick="hapusKomentar(${index})">Hapus</button>
-        `;
-        container.appendChild(div);
-    });
+function openModal(link){
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("frame").src = link;
 }
 
-function tambahKomentar(){
-    let nama=document.getElementById("nama").value;
-    let isi=document.getElementById("komentar").value;
-
-    if(nama===""||isi===""){
-        alert("Isi dulu!");
-        return;
-    }
-
-    komentarData.push({nama:nama,isi:isi});
-    localStorage.setItem("komentar",JSON.stringify(komentarData));
-
-    document.getElementById("nama").value="";
-    document.getElementById("komentar").value="";
-    renderKomentar();
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+  document.getElementById("frame").src = "";
 }
-
-function hapusKomentar(index){
-    komentarData.splice(index,1);
-    localStorage.setItem("komentar",JSON.stringify(komentarData));
-    renderKomentar();
-}
-
-function editKomentar(index){
-    let baru=prompt("Edit komentar:",komentarData[index].isi);
-    if(baru!==null){
-        komentarData[index].isi=baru;
-        localStorage.setItem("komentar",JSON.stringify(komentarData));
-        renderKomentar();
-    }
-}
-
-renderKomentar();
 </script>
 
 </body>
