@@ -3,211 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project DartPad Modern</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>Pink Blue Popup</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-body{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  background: linear-gradient(-45deg,#ff4ecd,#6a5cff,#00c3ff,#ff6ec7);
-  background-size:400% 400%;
-  animation:gradient 12s ease infinite;
-  color:white;
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #ff4ecd, #4ecbff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-@keyframes gradient{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+/* Card utama */
+.container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  animation: fadeIn 1s ease;
 }
 
-.container{
-  max-width:1100px;
-  width:100%;
-  text-align:center;
+.container h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
 }
 
-h1{
-  font-size:2.5rem;
-  margin-bottom:40px;
-  background:linear-gradient(to right,#fff,#ffd6fa);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+.container p {
+  font-size: 16px;
+  margin-bottom: 25px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:25px;
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #ff4ecd;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.card{
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(15px);
-  border-radius:25px;
-  padding:30px 20px;
-  transition:0.4s ease;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
-  position:relative;
-  overflow:hidden;
+.btn:hover {
+  background: #ff4ecd;
+  color: white;
+  transform: scale(1.05);
 }
 
-.card::before{
-  content:"";
-  position:absolute;
-  width:150%;
-  height:150%;
-  background:radial-gradient(circle,#ff4ecd55,transparent);
-  top:-50%;
-  left:-50%;
-  transform:rotate(25deg);
+/* Popup overlay */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s ease;
 }
 
-.card:hover{
-  transform:translateY(-12px) scale(1.05);
-  box-shadow:0 20px 40px rgba(255,0,200,0.4);
+/* Popup box */
+.popup-content {
+  background: linear-gradient(135deg, #ff4ecd, #4ecbff);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  animation: slideUp 0.5s ease;
 }
 
-.card h3{
-  margin-bottom:15px;
-  color:#ff9afc;
-  font-size:1.3rem;
+.popup-content h2 {
+  margin-bottom: 15px;
 }
 
-.card p{
-  font-size:0.9rem;
-  opacity:0.85;
-  margin-bottom:25px;
+.close-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: white;
+  color: #ff4ecd;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.btn{
-  padding:12px 25px;
-  border-radius:50px;
-  border:none;
-  cursor:pointer;
-  font-weight:bold;
-  background:linear-gradient(45deg,#ff4ecd,#6a5cff);
-  color:white;
-  transition:0.3s;
+.close-btn:hover {
+  background: #ff4ecd;
+  color: white;
 }
 
-.btn:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 20px #ff4ecd;
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
-/* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+@keyframes slideUp {
+  from {transform: translateY(40px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
 }
 
-.modal-content{
-  width:95%;
-  max-width:1000px;
-  height:85%;
-  background:#111;
-  border-radius:20px;
-  overflow:hidden;
-  position:relative;
-  animation:popup 0.4s ease;
-}
-
-@keyframes popup{
-  from{transform:scale(0.8); opacity:0;}
-  to{transform:scale(1); opacity:1;}
-}
-
-.modal iframe{
-  width:100%;
-  height:100%;
-  border:none;
-}
-
-.close{
-  position:absolute;
-  top:10px;
-  right:20px;
-  font-size:25px;
-  cursor:pointer;
-  color:white;
-  z-index:10;
-}
-
-@media(max-width:600px){
-  h1{font-size:1.8rem;}
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    padding: 25px;
+  }
+  .container h1 {
+    font-size: 22px;
+  }
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <div class="container">
-  <h1>🔥 Project DartPad Saya</h1>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Program 1</h3>
-      <p>Latihan dasar Dart dengan output sederhana.</p>
-      <button class="btn" onclick="openModal('https://dartpad.dev/f7840a92c93fe8f3ca217d8aa5d35f24')">
-        🚀 Run Code
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Program 2</h3>
-      <p>Percabangan dan perulangan dalam Dart.</p>
-      <button class="btn" onclick="openModal('https://dartpad.dev/aa646ee1837e770a7dd094803352a044')">
-        🚀 Run Code
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Program 3</h3>
-      <p>Latihan OOP dan function Dart.</p>
-      <button class="btn" onclick="openModal('https://dartpad.dev/b52bd402da820a8ae6d046d1766c076b')">
-        🚀 Run Code
-      </button>
-    </div>
-
-  </div>
+  <h1>Website Pink 💖 Blue 💙</h1>
+  <p>Desain modern, responsive, dan aesthetic!</p>
+  <button class="btn" onclick="openPopup()">Buka Popup</button>
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">✖</span>
-    <iframe id="frame"></iframe>
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2>Halo Cantik ✨</h2>
+    <p>Ini popup dengan tema pink & biru yang super kece 😍</p>
+    <button class="close-btn" onclick="closePopup()">Tutup</button>
   </div>
 </div>
 
 <script>
-function openModal(link){
-  document.getElementById("modal").style.display="flex";
-  document.getElementById("frame").src=link;
+function openPopup() {
+  document.getElementById("popup").style.display = "flex";
 }
 
-function closeModal(){
-  document.getElementById("modal").style.display="none";
-  document.getElementById("frame").src="";
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
 }
 </script>
 
