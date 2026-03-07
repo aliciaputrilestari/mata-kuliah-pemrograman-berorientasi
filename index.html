@@ -245,19 +245,15 @@ di mana program dibuat berdasarkan model objek yang memiliki data (atribut) dan 
 (model dan color) serta dua method (start dan stop) yang merepresentasikan perilaku dasar sebuah mobil.</p>
 <div class="code-box">
 <pre>
-// Nama  : Alicia Putri Lestari
-// Nim   : 251410011
-// Kelas : Si2A
+// Nama   : Alicia Putri Lestari
+// Nim    : 251410011
+// Kelas  : Si2A
+
 class Car {
   String? model;
   String? color;
-
   void start() {
     print('Car started!');
-  }
-
-  void stop() {
-    print('Car stopped!');
   }
 }
 </pre>
@@ -302,18 +298,15 @@ diciptakan dalam memori sistem. Di Dart, kita bisa menggunakan formal parameters
 (this.attribute) untuk menyederhanakan proses pengisian nilai attribute.</p>
 <div class="code-box">
 <pre>
-// Nama  : Alicia Putri Lestari
-// Nim   : 251410011
-// Kelas : Si2A
+// Nama   : Alicia Putri Lestari
+// Nim    : 251410011
+// Kelas  : Si2A
+
 class Car {
-  String? model;
-  String? color;
+  String model; 
+  String color;
 
   Car(this.model, this.color);
-
-  void start() {
-    print('Engine Online: $model');
-  }
 }
 </pre>
 </div>
@@ -331,19 +324,15 @@ memastikan setiap objek mahasiswa memiliki data yang lengkap saat dibuat.</P>
 <div class="code-box">
 <pre>
 // Nama   : Alicia Putri Lestari
-// Nim    : 251410011
+// Nim    : 251410002
 // Kelas  : Si2A
 
 class Mahasiswa {
-  String nama;
-  String nim;
-  double ipk;
+  String nama; 
+  String nim; 
+  double ipk;  
 
   Mahasiswa(this.nama, this.nim, this.ipk);
-
-  void tampilkanData() {
-    print('NAMA : $nama | NIM : $nim | IPK : $ipk');
-  }
 }
 </pre>
 </div>
@@ -360,20 +349,15 @@ Di Dart, kita menggunakan awalan underscore (_) untuk membuat attribute bersifat
 private, sehingga hanya bisa diakses melalui getter dan setter.</p>
 <div class="code-box">
 <pre>
-// Nama   : Alicia Putri Lestari
+// Nama   : Alicia Putri Leestari
 // Nim    : 251410011
 // Kelas  : Si2A
-class Person {
-  String _name;
-  int age;
-  Person(this._name, this.age);
-  void setName(String name) {
-    _name = name;
-  }
 
-  String getName() {
-    return _name;
-  }
+class Person {
+  String _name; 
+  int age;    
+
+  Person(this._name, this.age);
 }
 </pre>
 </div>
@@ -393,11 +377,15 @@ constructor sama dengan nama attribute di dalam class.</p>
 // Nama   : Alicia Putri Lestari
 // Nim    : 251410011
 // Kelas  : Si2A
+
 class Product {
-  String nama;
+  String nama; 
   Product(this.nama);
 }
-</pre>
+
+void main() {
+}
+<pre>
 </div>
 <button class="dartpad-btn" onclick="openDartPad('419313f138b685f3ce8cf8b1e1455ce9')">
     <i>▶</i> Jalankan Kode di DartPad
@@ -415,19 +403,12 @@ wajib tidak diisi.</p>
 // Nama   : Alicia Putri Lestari
 // Nim    : 251410011
 // Kelas  : Si2A
-class Produk {
-  final String id, nama;
-  final double harga;
-  final int stok;
-  final String kategori;
 
-  Produk({
-    required this.id,
-    required this.nama,
-    required this.harga,
-    this.stok = 0,
-    this.kategori = 'Umum',
-  });
+class Produk {
+  final String id, nama; 
+  final double harga; 
+  final int stok;   
+  final String kategori;
 }
 </pre>
 </div>
@@ -453,18 +434,15 @@ Encapsulation adalah konsep menyembunyikan data dalam class dan hanya bisa diaks
 <p>Implementasi Kelas Hewan sesuai instruksi diskusi untuk pendefinisian atribut dan metode dasar.</p>
 <div class="code-box">
 <pre>
-// Nama   : Alicia Putri Lestari
-// Nim    : 251410011
-// Kelas  : Si2A
+// Nama  : Alicisa Putri Lestari
+// Nim   : 251410011
+// Kelas : Si2a
 
 class Hewan {
   String nama;
-
   Hewan(this.nama);
-
   void bersuara() {
     print('$nama sedang bersuara...');
-    print('Sound Protocol: [DATA_SOUND_GENERATED]');
   }
 }
 </pre>
