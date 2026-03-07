@@ -255,6 +255,17 @@ class Car {
   void start() {
     print('Car started!');
   }
+  void stop() {
+    print('Car stopped!');
+  }
+}
+void main() {
+  Car myCar = Car();
+  
+  myCar.model = "Sedan";
+  myCar.color = "Merah";
+  myCar.start();
+  myCar.stop();
 }
 </pre>
 </div>
@@ -271,17 +282,23 @@ class tersebut di dalam fungsi main(). Proses ini disebut instansiasi, di mana
 objek dialokasikan ke dalam memori.</p>
 <div class="code-box">
 <pre>
-// Nama  : Alicia Putri Lestari
-// Nim   : 251410011
-// Kelas : Si2A
+// Nama   : Alicia Putri Lestari
+// Nim    : 251410011
+// Kelas  : Si2A
+
+class Car {
+  String? model; 
+  String? color; 
+}
+
 void main() {
   Car myCar = Car();
   
-  myCar.model = "Sedan";
+  myCar.model = "Sedan"; 
   myCar.color = "Merah";
 
-  myCar.start();
-  myCar.stop();
+  print(myCar.model); 
+  print(myCar.color);
 }
 </pre>
 </div>
@@ -307,6 +324,17 @@ class Car {
   String color;
 
   Car(this.model, this.color);
+
+  void start() {
+    print('Engine Online: $model'); 
+  }
+}
+
+void main() {
+  Car myCar = Car("Sedan", "Merah");
+
+  myCar.start(); 
+  print(myCar.color); 
 }
 </pre>
 </div>
@@ -324,7 +352,7 @@ memastikan setiap objek mahasiswa memiliki data yang lengkap saat dibuat.</P>
 <div class="code-box">
 <pre>
 // Nama   : Alicia Putri Lestari
-// Nim    : 251410002
+// Nim    : 251410011
 // Kelas  : Si2A
 
 class Mahasiswa {
@@ -333,6 +361,18 @@ class Mahasiswa {
   double ipk;  
 
   Mahasiswa(this.nama, this.nim, this.ipk);
+
+  void tampilkanData() {
+    print('Nama : $nama');
+    print('NIM  : $nim');
+    print('IPK  : $ipk');
+  }
+}
+
+void main() {
+  Mahasiswa mhs1 = Mahasiswa("Agis Lyoni Putri", "251410022", 3.87);
+  
+  mhs1.tampilkanData();
 }
 </pre>
 </div>
@@ -358,6 +398,18 @@ class Person {
   int age;    
 
   Person(this._name, this.age);
+
+  void setName(String name) => _name = name;
+  
+  String getName() => _name;
+}
+
+void main() {
+  Person person = Person("Alicia Putri Lestari", 18);
+
+  print(person.age); 
+  person.setName("Alicia Putri Lestari");
+  print(person.getName()); 
 }
 </pre>
 </div>
@@ -384,6 +436,8 @@ class Product {
 }
 
 void main() {
+  Product produk1 = Product("Laptop Gaming");
+  print(produk1.nama); 
 }
 <pre>
 </div>
@@ -400,7 +454,7 @@ objek menjadi lebih deskriptif dan aman karena compiler akan memberikan peringat
 wajib tidak diisi.</p>
 <div class="code-box">
 <pre>
-// Nama   : Alicia Putri Lestari
+//Nama   : Alicia Putri Lestari
 // Nim    : 251410011
 // Kelas  : Si2A
 
@@ -409,6 +463,41 @@ class Produk {
   final double harga; 
   final int stok;   
   final String kategori;
+
+  Produk({
+    required this.id,
+    required this.nama,
+    required this.harga,
+    this.stok = 0,
+    this.kategori = 'Umum',
+  });
+}
+
+void main() {
+  Produk laptop = Produk(
+    id: "P001",
+    nama: "Laptop Gaming",
+    harga: 15000000,
+    stok: 15,
+    kategori: "Elektronik",
+  );
+
+  Produk smartphone = Produk(
+    id: "P002",
+    nama: "Smartphone Flagship",
+    harga: 12000000,
+    stok: 25,
+  );
+
+  Produk kamera = Produk(
+    id: "P003",
+    nama: "Kamera Mirrorless",
+    harga: 20000000,
+  );
+
+  print(laptop.nama); 
+  print(smartphone.nama); 
+  print(kamera.nama); 
 }
 </pre>
 </div>
@@ -444,6 +533,11 @@ class Hewan {
   void bersuara() {
     print('$nama sedang bersuara...');
   }
+}
+void main() {
+  var myPet = Hewan('Kucing');
+  print('Nama Hewan: ${myPet.nama}');
+  myPet.bersuara();
 }
 </pre>
 </div>
