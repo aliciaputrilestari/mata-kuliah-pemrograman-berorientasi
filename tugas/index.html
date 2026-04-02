@@ -1,1 +1,728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOP Dart</title>
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOP Dart</title>
+
+<style>
+
+/* ============================= */
+/* RESPONSIVE DESIGN */
+/* ============================= */
+
+/* Tablet */
+@media (max-width: 900px){
+
+.container{
+flex-direction:column;
+}
+
+.content{
+width:100%;
+}
+
+.comment-box{
+position:relative;
+top:0;
+margin-top:20px;
+}
+
+header h1{
+font-size:28px;
+}
+
+}
+
+/* Mobile */
+@media (max-width:600px){
+
+header{
+padding:25px 10px;
+}
+
+header h1{
+font-size:22px;
+}
+
+}
+
+</style>
+
+</head>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ff4da6,#4da6ff);
+    color:white;
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:40px 20px;
+    background:rgba(0,0,0,0.75);
+}
+
+header h1{
+    font-size:35px;
+    background:linear-gradient(45deg,#ff99dd,#66ccff);
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:goyang 3s infinite alternate;
+}
+
+@keyframes goyang{
+    from{transform:translateX(-4px);}
+    to{transform:translateX(4px);}
+}
+
+header p{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* LAYOUT */
+.container{
+    display:flex;
+    width:95%;
+    margin:40px auto;
+    gap:30px;
+}
+
+/* CONTENT */
+.content{
+    flex:2;
+}
+
+.section{
+    background:rgba(0,0,0,0.8);
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:15px;
+    box-shadow:0 0 20px #ff66cc;
+    transition:0.3s;
+}
+
+.section:hover{
+    transform:scale(1.02);
+    box-shadow:0 0 25px #66ccff;
+}
+
+.section h2{
+    margin-bottom:15px;
+    color:#66ccff;
+}
+
+.code-box{
+    background:#111;
+    padding:15px;
+    border-radius:10px;
+    border:2px solid #66ccff;
+    color:#00ffcc;
+    font-family:monospace;
+    overflow-x:auto;
+    margin-top:10px;
+}
+
+/* Style untuk tombol DartPad */
+.dartpad-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff4da6, #4da6ff);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dartpad-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #66ccff;
+    background: linear-gradient(45deg, #4da6ff, #ff4da6);
+}
+
+.dartpad-btn i {
+    margin-right: 8px;
+}
+
+/* COMMENT */
+.comment-box{
+    flex:1;
+    background:rgba(0,0,0,0.9);
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 25px #66ccff;
+    height:fit-content;
+    position:sticky;
+    top:20px;
+}
+
+.comment-box h2{
+    text-align:center;
+    margin-bottom:15px;
+    color:#ff99dd;
+}
+
+input,textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    padding:8px 12px;
+    border:none;
+    border-radius:6px;
+    background:linear-gradient(45deg,#ff4da6,#4da6ff);
+    color:white;
+    cursor:pointer;
+    margin-top:5px;
+}
+
+.comment-item{
+    background:rgba(255,255,255,0.1);
+    padding:10px;
+    border-radius:8px;
+    margin-top:10px;
+}
+
+.comment-item strong{
+    color:#66ccff;
+}
+
+/* Style untuk iframe modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    margin: 2% auto;
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001;
+    background: rgba(255,255,255,0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.close-btn:hover {
+    background: rgba(255,255,255,0.4);
+    transform: scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>ALICIA PUTRI LESTARI</h1>
+<p>NIM: 251410011 | KELAS: SI2A</p>
+</header>
+
+<div class="container">
+
+<div class="content">
+
+<!-- PENGERTIAN POLIMORFISME DAN ABSTAKSI - Link 1 -->
+<div class="section" id="section1">
+<h2>PENGERTIAN POLIMORFISME DAN ABSTAKSI</h2> 
+<p>Polimorfisme: Entitas sama dengan perilaku berbeda sesuai konteks.
+Abstraksi: Sembunyikan detail tak perlu, tampilkan hanya hal esensial.</p>
+</div>
+
+<!-- - PEWARIS - Link 2 -->
+<div class="section" id="section2">
+<h2>PEWARIS</h2>
+<p>Pewarisan adalah konsep Pemrograman Berorientasi Objek (OOP) yang memungkinkan kelas anak (subclass) untuk 
+mengambil alih serta menggunakan atribut dan fungsi yang dimiliki oleh kelas induk (superclass). Pada bahasa Dart,
+hubungan pewarisan dibuat dengan menggunakan kata kunci  extends .</p>
+</div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+class Hewan {
+  void bersuara() => print('...');
+}
+
+class Kucing extends Hewan {
+  @override
+  void bersuara() => print('Meong');
+}
+
+void main() {
+  Kucing k = Kucing();
+  k.bersuara();
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('dd9a1622cf8de63574fc40a3745d97de')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<!-- 03 - PENGANTAR POLIMORFISME - Link 3 -->
+<div class="section" id="section3">
+<h2>PENGANTAR POLIMORFISME</h2>
+<p>Polimorfisme berarti "banyak bentuk"—konsep inti OOP yang membuat entitas seperti method/kelas memiliki perilaku
+berbeda sesuai objek/konteksnya. Kode jadi fleksibel, bisa digunakan untuk berbagai objek tanpa logika terpisah,
+dan bekerja bersama dengan pewarisan serta abstraksi.</p>
+<div>
+
+<!-- 04 - POLIMORFISME DENGAN INHERITANCE - Link 4 -->
+<div class="section" id="section4">
+<h2>POLIMORFISME DENGAN INHERITANCE</h2>
+<P>Variabel parent bisa simpan objek child berbeda.</P>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+class Bentuk {
+  void gambar() => print('Menggambar bentuk');
+}
+
+class Lingkaran extends Bentuk {
+  @override
+  void gambar() => print('Menggambar lingkaran');
+}
+
+class Persegi extends Bentuk {
+  @override
+  void gambar() => print('Menggambar persegi');
+}
+
+void main() {
+  Bentuk bentuk1 = Lingkaran(); // Polimorfisme
+  Bentuk bentuk2 = Persegi();
+
+  bentuk1.gambar(); // Menggambar lingkaran
+  bentuk2.gambar(); // Menggambar persegi
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('f1e0172d102e4bafa535f216a79772a7')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<!-- 05 - MANFAAT POLIMORFISM - Link 5 -->
+<div class="section" id="section5">
+<h2>MANFAAT POLIMORFISM</h2>
+<p>Kode dinamis, mudah diperluas, bisa digunakan kembali, dan mudah dikelola.</p>
+<div>
+
+
+<!-- 06 - IS DAN AS OPERATOR - Link 6 -->
+<div class="section" id="section6">
+<h2>IS DAN AS OPERATOR</h2>
+<p> is  mengecek apakah objek termasuk tipe tertentu;  as  melakukan konversi tipe objek agar bisa mengakses method tertentu dengan aman.</p>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+class Kendaraan {}
+
+class Mobil extends Kendaraan {
+  void klakson() => print('Tin!');
+}
+
+void main() {
+  Kendaraan k = Mobil();
+
+  if (k is Mobil) {
+    (k as Mobil).klakson();
+  }
+
+  // Safe casting
+  (k as Mobil?)?.klakson();
+}
+<pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('aa4a119d3d683ddb3a8d5549f46567e8')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<!-- 07 - PRAKTIK 1: POLIMORFISME DENGAN LIST - Link 7 -->
+<div class="section" id="section7">
+<h2>PRAKTIK 1: POLIMORFISME DENGAN LIST</h2>
+<p>List bertipe parent bisa menyimpan berbagai objek subclass. Saat diulang,
+setiap objek akan menjalankan method sesuai implementasinya sendiri.</p>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+class Hewan {
+  void bersuara() => print('Hewan bersuara');
+}
+
+class Kucing extends Hewan {
+  @override
+  void bersuara() => print('Meong');
+}
+
+class Anjing extends Hewan {
+  @override
+  void bersuara() => print('Guk guk');
+}
+
+class Burung extends Hewan {
+  @override
+  void bersuara() => print('Cuit cuit');
+}
+
+void main() {
+  List<Hewan> daftarHewan = [
+    Kucing(),
+    Anjing(),
+    Burung(),
+  ];
+
+  for (var h in daftarHewan) {
+    h.bersuara();
+  }
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('05b78902e9a4311c514097eec2657a93')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<!-- 08 - PENGANTAR ABSTRAKSI - Link 8 -->
+<div class="section" id="section8">
+<h2>PENGATAR ABSTRAKSI</h2>
+<p>Sembunyikan detail kerja, tampilkan fungsi utama. Fokus pada apa yang dilakukan.</p>
+<div>
+
+<!-- 09 - ABSTRACT CLASS - Link 4 --> 
+<div class="section" id="section4">
+<h2>ABSTRACT CLASS</h2>
+<P>Tidak bisa dibuat objek langsung, punya method abstract dan biasa, jadi dasar kelas anak.</P>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+abstract class Kendaraan {
+  String? merk;
+
+  void start(); // abstract
+
+  void stop() {
+    print('Kendaraan berhenti');
+  }
+}
+
+class Mobil extends Kendaraan {
+  @override
+  void start() {
+    print('Mobil $merk menyala');
+  }
+}
+
+void main() {
+  Mobil m = Mobil();
+  m.merk = "Toyota";
+  m.start();
+  m.stop();
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('bb47233cefe23d37d5e03fd1cc28097d')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<!-- 10 - SOAL 1 - PRAKTIK 2 (USER) - Link 4 -->
+<div class="section" id="section4">
+<h2></h2>
+<div class="code-box">
+<pre>
+// Nama   : Alicia Putri Lestari
+// Nim    : 251410011
+// Kelas  : SI2A
+
+class User {
+  String _username;
+  String _password;
+  String _email;
+
+  User(this._username, this._password, this._email);
+
+  // Getter untuk semua field
+  String get username => _username;
+  String get email => _email;
+
+  // Setter dengan validasi
+  set username(String v) {
+    if (v.length >= 5) {
+      _username = v;
+    } else {
+      print('Username min 5 karakter');
+    }
+  }
+
+  set password(String v) {
+    if (v.length >= 8) {
+      _password = v;
+    } else {
+      print('Password min 8 karakter');
+    }
+  }
+
+  set email(String v) {
+    if (v.contains('@')) {
+      _email = v;
+    } else {
+      print('Format email salah (Harus @)');
+    }
+  }
+
+  void info() => print('User: $_username, Pass: $_password, Email: $_email');
+}
+
+void main() {
+  var user = User('alicia', '987', 'admin.com');
+  user.username = 'aliciaputrilestari';
+  user.password = 'rahasia987';
+  user.email = 'allisiya@gmail.com';
+  user.info();
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('2eea04a9064be20489b74aad4cc222c1')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<!-- 11 - STUDI KASUS - SISTEM LOGIN - Link 4 -->
+<div class="section" id="section4">
+<h2>11 - STUDI KASUS - SISTEM LOGIN</h2>
+<P> Logika autentikasi dan prosedur perubahan password</P>
+<div class="code-box">
+<pre>
+// Nama   : Alicia Putri Lestari
+// Nim    : 251410011
+// Kelas  : SI2A
+
+class User {
+  String _username;
+  String _password;
+
+  User(this._username, this._password);
+  String get username => _username;
+
+  bool login(String username, String password) {
+    return _username == username && _password == password;
+  }
+
+  void gantiPassword(String lama, String baru) {
+    if (_password == lama) {
+      if (baru.length >= 8) {
+        _password = baru;
+        print('Password berhasil diubah.');
+      } else {
+        print('Gagal: Password baru minimal 8 karakter.');
+      }
+    } else {
+      print('Gagal: Password lama tidak sesuai.');
+    }
+  }
+}
+
+void main() {
+  print('--- Inisialisasi User ---');
+  final User user1 = User('admin_alicia', 'securePass987');
+  
+  print('--- Uji Coba Login ---');
+  if (user1.login('admin_alicia', 'securePass987')) {
+    print('Login Berhasil!');
+  }
+
+  print('\n--- Uji Coba Ganti Password ---');
+  user1.gantiPassword('securePass987', 'newSecurePass123');
+  user1.gantiPassword('wrongPass', 'anyPass'); // Gagal
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('381e3ef1dd179399870f3f4856b0b9d9')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<!-- 12 - SOAL 2 - LATIHAN (BANK) - Link 4 -->
+<div class="section" id="section4">
+<h2>12 - SOAL 2 - LATIHAN (BANK)</h2>
+<div class="code-box">
+<pre>
+// Nama   : Alicia Putri Lestari
+// Nim    : 251410002
+// Kelas  : SI2A
+
+class RekeningBank {
+  String _nomorRekening;
+  double _saldo;
+
+  RekeningBank(this._nomorRekening, this._saldo);
+
+  void deposit(double jml) {
+    if (jml > 0) {
+      _saldo += jml;
+      print('Deposit Rp $jml Berhasil.');
+    }
+  }
+
+  void tarik(double jml) {
+    if (jml > 0 && _saldo >= jml) {
+      _saldo -= jml;
+      print('Tarik Rp $jml Berhasil.');
+    } else {
+      print('Gagal: Saldo tidak cukup atau input tidak valid.');
+    }
+  }
+
+  void cekSaldo() {
+    print('Rekening: $_nomorRekening | Saldo: Rp $_saldo');
+  }
+}
+
+void main() {
+  var bank = RekeningBank('2514-10002', 3000000);
+  bank.cekSaldo();
+  bank.tarik(600000);
+  bank.cekSaldo();
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('6505a7bf37619ecf05e9baf1d6e6f9d9')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<!--  - RINGKASAN MATERI (Tidak ada link DartPad) -->
+<div class="section">
+<h2>- RINGKASAN MATERI</h2>
+<p>1. Constructor: Dart menyediakan berbagai jenis konstruktor untuk membuat objek dengan cara yang lebih fleksibel sesuai kebutuhan.</p>
+​
+<p>2. Enkapsulasi: Melindungi data dengan menggunakan private field (ditandai dengan awalan garis bawah  _ ).</p>
+​
+<p>3. Getter & Setter: Memberikan cara yang aman untuk mengakses dan mengubah data private dengan kontrol tambahan.</p>
+</div>
+</div>
+
+</div>
+
+<!-- MODAL UNTUK DARTPAD -->
+<div id="dartpadModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeDartPad()">&times;</span>
+        <iframe id="dartpadIframe" src="" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+    </div>
+</div>
+
+<script>
+    // Fungsi untuk membuka DartPad di modal
+    function openDartPad(id) {
+        const modal = document.getElementById('dartpadModal');
+        const iframe = document.getElementById('dartpadIframe');
+        
+        // Hapus trailing slash jika ada
+        id = id.replace(/\/$/, '');
+        
+        // Set src iframe dengan ID yang benar
+        iframe.src = `https://dartpad.dev/embed-inline.html?id=${id}&theme=dark&run=true`;
+        
+        // Tampilkan modal
+        modal.style.display = 'block';
+        
+        // Cegah scroll di background
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Fungsi untuk menutup modal
+    function closeDartPad() {
+        const modal = document.getElementById('dartpadModal');
+        const iframe = document.getElementById('dartpadIframe');
+        
+        // Sembunyikan modal
+        modal.style.display = 'none';
+        
+        // Hentikan iframe dengan mengosongkan src
+        iframe.src = '';
+        
+        // Kembalikan scroll
+        document.body.style.overflow = 'auto';
+    }
+
+    // Tutup modal jika klik di luar konten modal
+    window.onclick = function(event) {
+        const modal = document.getElementById('dartpadModal');
+        if (event.target == modal) {
+            closeDartPad();
+        }
+    }
+
+   
+</script>
+
+</body>
+</html>
