@@ -273,24 +273,20 @@ button{
 
 <div class="content">
 
-<!-- PENGERTIAN POLIMORFISME DAN ABSTAKSI - Link 1 -->
 <div class="section" id="section1">
-<h2>PENGERTIAN POLIMORFISME DAN ABSTAKSI</h2> 
+<h2>PENGERTIAN POLIMORFISME DAN ABSTRAKSI</h2> 
 <p>Polimorfisme: Entitas sama dengan perilaku berbeda sesuai konteks.
 Abstraksi: Sembunyikan detail tak perlu, tampilkan hanya hal esensial.</p>
 </div>
 
-<!-- - PEWARIS - Link 2 -->
-<div class="section" id="section2">
-<h2>PEWARIS</h2>
-<p>Pewarisan adalah konsep Pemrograman Berorientasi Objek (OOP) yang memungkinkan kelas anak (subclass) untuk 
-mengambil alih serta menggunakan atribut dan fungsi yang dimiliki oleh kelas induk (superclass). Pada bahasa Dart,
-hubungan pewarisan dibuat dengan menggunakan kata kunci  extends .</p>
-</div class="code-box">
+<div class="section" id="section3">
+<h2>PEWARISAN</h2>
+<p>Pewarisan adalah konsep Pemrograman Berorientasi Objek (OOP) yang memungkinkan kelas anak (subclass) untuk mengambil alih serta menggunakan atribut dan fungsi yang dimiliki oleh kelas induk (superclass). Pada bahasa Dart, hubungan pewarisan dibuat dengan menggunakan kata kunci  extends .</p>
+<div class="code-box">
 <pre>
-// Nama  : Alicia Putri Lestari
-// Nim   : 251410011
-// Kelas : SI2A
+// Nama   : Alicia Putri Lestari
+// Nim    : 251410011
+// Kelas  : SI2A
 
 class Hewan {
   void bersuara() => print('...');
@@ -307,20 +303,16 @@ void main() {
 }
 </pre>
 </div>
-<button class="dartpad-btn" onclick="openDartPad('dd9a1622cf8de63574fc40a3745d97de')">
+<button class="dartpad-btn" onclick="openDartPad('')">
     <i>▶</i> Jalankan Kode di DartPad
 </button>
 </div>
 
-<!-- 03 - PENGANTAR POLIMORFISME - Link 3 -->
-<div class="section" id="section3">
-<h2>PENGANTAR POLIMORFISME</h2>
-<p>Polimorfisme berarti "banyak bentuk"—konsep inti OOP yang membuat entitas seperti method/kelas memiliki perilaku
-berbeda sesuai objek/konteksnya. Kode jadi fleksibel, bisa digunakan untuk berbagai objek tanpa logika terpisah,
-dan bekerja bersama dengan pewarisan serta abstraksi.</p>
-<div>
+<div class="section" id="section1">
+<h2>PENGANTAR POLIMORFISME</h2> 
+<p>Polimorfisme berarti "banyak bentuk"—konsep inti OOP yang membuat entitas seperti method/kelas memiliki perilaku berbeda sesuai objek/konteksnya. Kode jadi fleksibel, bisa digunakan untuk berbagai objek tanpa logika terpisah, dan bekerja bersama dengan pewarisan serta abstraksi.</p>
+</div>
 
-<!-- 04 - POLIMORFISME DENGAN INHERITANCE - Link 4 -->
 <div class="section" id="section4">
 <h2>POLIMORFISME DENGAN INHERITANCE</h2>
 <P>Variabel parent bisa simpan objek child berbeda.</P>
@@ -353,56 +345,46 @@ void main() {
 }
 </pre>
 </div>
-<button class="dartpad-btn" onclick="openDartPad('f1e0172d102e4bafa535f216a79772a7')">
+<button class="dartpad-btn" onclick="openDartPad('5e095da5e8b5ff516d016b9741d05412')">
     <i>▶</i> Jalankan Kode di DartPad
 </button>
 </div>
 
-<!-- 05 - MANFAAT POLIMORFISM - Link 5 -->
-<div class="section" id="section5">
-<h2>MANFAAT POLIMORFISM</h2>
+<div class="section" id="section1">
+<h2>MANFAAT POLIMORFISME</h2> 
 <p>Kode dinamis, mudah diperluas, bisa digunakan kembali, dan mudah dikelola.</p>
-<div>
+</div>
 
-
-<!-- 06 - IS DAN AS OPERATOR - Link 6 -->
-<div class="section" id="section6">
+<div class="section" id="section5">
 <h2>IS DAN AS OPERATOR</h2>
-<p> is  mengecek apakah objek termasuk tipe tertentu;  as  melakukan konversi tipe objek agar bisa mengakses method tertentu dengan aman.</p>
+<p>is  mengecek apakah objek termasuk tipe tertentu;  as  melakukan konversi tipe objek agar bisa mengakses method tertentu dengan aman.</p>
 <div class="code-box">
 <pre>
-// Nama  : Alicia Putri Lestari
-// Nim   : 251410011
-// Kelas : SI2A
-
 class Kendaraan {}
 
-class Mobil extends Kendaraan {
-  void klakson() => print('Tin!');
+class Truk extends Kendaraan {
+  void klakson() {
+    print('Telolet!');
+  }
 }
 
 void main() {
-  Kendaraan k = Mobil();
+  Kendaraan k = Truk();
 
-  if (k is Mobil) {
-    (k as Mobil).klakson();
+  if (k is Truk) {
+    k.klakson(); // aman, tanpa casting
   }
-
-  // Safe casting
-  (k as Mobil?)?.klakson();
 }
-<pre>
+</pre>
 </div>
-<button class="dartpad-btn" onclick="openDartPad('aa4a119d3d683ddb3a8d5549f46567e8')">
+<button class="dartpad-btn" onclick="openDartPad('63637c9d8261fcbd1e7edf70943a52c8')">
     <i>▶</i> Jalankan Kode di DartPad
 </button>
 </div>
 
-<!-- 07 - PRAKTIK 1: POLIMORFISME DENGAN LIST - Link 7 -->
-<div class="section" id="section7">
+<div class="section" id="section6">
 <h2>PRAKTIK 1: POLIMORFISME DENGAN LIST</h2>
-<p>List bertipe parent bisa menyimpan berbagai objek subclass. Saat diulang,
-setiap objek akan menjalankan method sesuai implementasinya sendiri.</p>
+<p>List bertipe parent bisa menyimpan berbagai objek subclass. Saat diulang, setiap objek akan menjalankan method sesuai implementasinya sendiri.</p>
 <div class="code-box">
 <pre>
 // Nama  : Alicia Putri Lestari
@@ -439,23 +421,21 @@ void main() {
     h.bersuara();
   }
 }
-</pre>
+<pre>
 </div>
 <button class="dartpad-btn" onclick="openDartPad('05b78902e9a4311c514097eec2657a93')">
     <i>▶</i> Jalankan Kode di DartPad
 </button>
 </div>
 
-<!-- 08 - PENGANTAR ABSTRAKSI - Link 8 -->
-<div class="section" id="section8">
-<h2>PENGATAR ABSTRAKSI</h2>
+<div class="section" id="section1">
+<h2>PENGATAR ABSTRAKSI</h2> 
 <p>Sembunyikan detail kerja, tampilkan fungsi utama. Fokus pada apa yang dilakukan.</p>
-<div>
+</div>
 
-<!-- 09 - ABSTRACT CLASS - Link 4 --> 
-<div class="section" id="section4">
+<div class="section" id="section7">
 <h2>ABSTRACT CLASS</h2>
-<P>Tidak bisa dibuat objek langsung, punya method abstract dan biasa, jadi dasar kelas anak.</P>
+<p>Tidak bisa dibuat objek langsung, punya method abstract dan biasa, jadi dasar kelas anak.</p>
 <div class="code-box">
 <pre>
 // Nama  : Alicia Putri Lestari
@@ -492,180 +472,482 @@ void main() {
 </button>
 </div>
 
-<!-- 10 - SOAL 1 - PRAKTIK 2 (USER) - Link 4 -->
-<div class="section" id="section4">
-<h2></h2>
+<div class="section" id="section8">
+<h2>ABSTRACT METHOD</h2>
+<p>Abstract method adalah metode yang hanya dideklarasikan (tanpa badan implementasi) dalam kelas abstrak, dan wajib dibuatkan implementasinya oleh kelas turunannya untuk menjamin konsistensi fungsionalitas antar subclass.
+ </p>
 <div class="code-box">
 <pre>
-// Nama   : Alicia Putri Lestari
-// Nim    : 251410011
-// Kelas  : SI2A
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
 
-class User {
-  String _username;
-  String _password;
-  String _email;
-
-  User(this._username, this._password, this._email);
-
-  // Getter untuk semua field
-  String get username => _username;
-  String get email => _email;
-
-  // Setter dengan validasi
-  set username(String v) {
-    if (v.length >= 5) {
-      _username = v;
-    } else {
-      print('Username min 5 karakter');
-    }
+abstract class AlatMusik {
+  void mainkan();
+  void info() {
+    print('Ini adalah alat musik');
   }
-
-  set password(String v) {
-    if (v.length >= 8) {
-      _password = v;
-    } else {
-      print('Password min 8 karakter');
-    }
-  }
-
-  set email(String v) {
-    if (v.contains('@')) {
-      _email = v;
-    } else {
-      print('Format email salah (Harus @)');
-    }
-  }
-
-  void info() => print('User: $_username, Pass: $_password, Email: $_email');
 }
 
-void main() {
-  var user = User('alicia', '987', 'admin.com');
-  user.username = 'aliciaputrilestari';
-  user.password = 'rahasia987';
-  user.email = 'allisiya@gmail.com';
-  user.info();
-}
-</pre>
-</div>
-<button class="dartpad-btn" onclick="openDartPad('2eea04a9064be20489b74aad4cc222c1')">
-    <i>▶</i> Jalankan Kode di DartPad
-</button>
-</div>
-
-<!-- 11 - STUDI KASUS - SISTEM LOGIN - Link 4 -->
-<div class="section" id="section4">
-<h2>11 - STUDI KASUS - SISTEM LOGIN</h2>
-<P> Logika autentikasi dan prosedur perubahan password</P>
-<div class="code-box">
-<pre>
-// Nama   : Alicia Putri Lestari
-// Nim    : 251410011
-// Kelas  : SI2A
-
-class User {
-  String _username;
-  String _password;
-
-  User(this._username, this._password);
-  String get username => _username;
-
-  bool login(String username, String password) {
-    return _username == username && _password == password;
-  }
-
-  void gantiPassword(String lama, String baru) {
-    if (_password == lama) {
-      if (baru.length >= 8) {
-        _password = baru;
-        print('Password berhasil diubah.');
-      } else {
-        print('Gagal: Password baru minimal 8 karakter.');
-      }
-    } else {
-      print('Gagal: Password lama tidak sesuai.');
-    }
+class Gitar extends AlatMusik {
+  @override
+  void mainkan() {
+    print('Jreng jreng...');
   }
 }
 
 void main() {
-  print('--- Inisialisasi User ---');
-  final User user1 = User('admin_alicia', 'securePass987');
-  
-  print('--- Uji Coba Login ---');
-  if (user1.login('admin_alicia', 'securePass987')) {
-    print('Login Berhasil!');
-  }
-
-  print('\n--- Uji Coba Ganti Password ---');
-  user1.gantiPassword('securePass987', 'newSecurePass123');
-  user1.gantiPassword('wrongPass', 'anyPass'); // Gagal
+  Gitar g = Gitar();
+  g.info();
+  g.mainkan();
 }
 </pre>
 </div>
-<button class="dartpad-btn" onclick="openDartPad('381e3ef1dd179399870f3f4856b0b9d9')">
+<button class="dartpad-btn" onclick="openDartPad('7241fb8967cfc86bf1244292b77de3aa')">
     <i>▶</i> Jalankan Kode di DartPad
 </button>
 </div>
 
-<!-- 12 - SOAL 2 - LATIHAN (BANK) - Link 4 -->
 <div class="section" id="section4">
-<h2>12 - SOAL 2 - LATIHAN (BANK)</h2>
+<h2>INTERFACE DI DART</h2>
+<P>Interface di Dart adalah kontrak yang mendefinisikan kumpulan metode dan properti yang harus diimplementasikan oleh kelas yang menggunakannya; kelas dapat mengimplementasikan banyak interface untuk memiliki berbagai kemampuan.</P>
 <div class="code-box">
 <pre>
-// Nama   : Alicia Putri Lestari
-// Nim    : 251410002
-// Kelas  : SI2A
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
 
-class RekeningBank {
-  String _nomorRekening;
-  double _saldo;
+interface class Flyable {
+  void terbang() => print('Terbang...');
+}
 
-  RekeningBank(this._nomorRekening, this._saldo);
+class Bird implements Flyable {
+  @override
+  void terbang() => print('Burung terbang tinggi');
+}
 
-  void deposit(double jml) {
-    if (jml > 0) {
-      _saldo += jml;
-      print('Deposit Rp $jml Berhasil.');
-    }
-  }
+class Plane implements Flyable {
+  @override
+  void terbang() => print('Pesawat terbang cepat');
+}
 
-  void tarik(double jml) {
-    if (jml > 0 && _saldo >= jml) {
-      _saldo -= jml;
-      print('Tarik Rp $jml Berhasil.');
-    } else {
-      print('Gagal: Saldo tidak cukup atau input tidak valid.');
-    }
-  }
+void main() {
+  Bird b = Bird();
+  Plane p = Plane();
 
-  void cekSaldo() {
-    print('Rekening: $_nomorRekening | Saldo: Rp $_saldo');
+  b.terbang();
+  p.terbang();
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('19808de2f4e2bea9d001d12fc68c6b1f')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<div class="section" id="section1">
+<h2>PERBEDAAN EXTENDS VS IMPLEMENTS</h2> 
+<p>- extends: Digunakan untuk pewarisan dari satu kelas induk saja, subclass mewarisi anggota induk dan dapat mengoverride perilakunya.</p>
+<p>- implements: Digunakan untuk mengikuti kontrak dari interface atau kelas (bisa banyak), kelas harus mengimplementasikan seluruh metode dan properti yang didefinisikan.
+</p>
+</div>
+
+<div class="section" id="section4">
+<h2>STATIC MEMBERS DAN METHOD</h2>
+<p>Static Members dan Method di Dart: Properti atau metode yang milik kelas itu sendiri (bukan objek yang dibuat darinya), diakses langsung melalui nama kelas. Static method bisa dijalankan tanpa membuat instance dan tidak dapat mengakses anggota non-statis.</p>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari 
+// Nim   : 251410011
+// Kelas : SI2A
+class MathUtils {
+  static double pi = 3.14;
+
+  static int add(int x, int y) {
+    return x + y;
   }
 }
 
 void main() {
-  var bank = RekeningBank('2514-10002', 3000000);
-  bank.cekSaldo();
-  bank.tarik(600000);
-  bank.cekSaldo();
+  print(MathUtils.pi);
+  print(MathUtils.add(10, 20));
 }
 </pre>
 </div>
-<button class="dartpad-btn" onclick="openDartPad('6505a7bf37619ecf05e9baf1d6e6f9d9')">
+<button class="dartpad-btn" onclick="openDartPad('732acd3bf8d99752a30b663114b97652')">
     <i>▶</i> Jalankan Kode di DartPad
 </button>
 </div>
 
-<!--  - RINGKASAN MATERI (Tidak ada link DartPad) -->
+<div class="section" id="section4">
+<h2>PRAKTIK 2: SISTEM PEMBAYARAN</h2>
+<P>Kontrak dasar  bayar()  diterapkan dengan cara berbeda oleh setiap metode pembayaran (QRIS, kartu kredit, tunai), sehingga objeknya bisa digunakan secara seragam namun menghasilkan output sesuai jenisnya.</P>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+abstract class MetodePembayaran {
+  void bayar(double jumlah);
+}
+
+class KartuKredit implements MetodePembayaran {
+  @override
+  void bayar(double jumlah) {
+    print('Bayar $jumlah dengan Kartu Kredit');
+  }
+}
+
+class EWallet implements MetodePembayaran {
+  @override
+  void bayar(double jumlah) {
+    print('Bayar $jumlah dengan E-Wallet');
+  }
+}
+
+class Tunai implements MetodePembayaran {
+  @override
+  void bayar(double jumlah) {
+    print('Bayar $jumlah dengan Tunai');
+  }
+}
+
+void main() {
+  List<MetodePembayaran> metode = [
+    KartuKredit(),
+    EWallet(),
+    Tunai()
+  ];
+
+  for (var m in metode) {
+    m.bayar(100000);
+  }
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('b5a79f1bc6d2bde8c56e86a445bcffff')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<div class="section" id="section4">
+<h2>STUDI KASUS: SISTEM BENTUK GEOMETRI</h2>
+<p>Kelas induk abstrak  Bentuk  sebagai dasar, setiap bentuk (segitiga, persegi panjang) memiliki implementasi berbeda untuk menghitung luas dan keliling, namun bisa digunakan secara seragam</p>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+abstract class Bentuk {
+  double hitungLuas();
+  double hitungKeliling();
+
+  void info() {
+    print('Luas: ${hitungLuas()}, Keliling: ${hitungKeliling()}');
+  }
+}
+
+class Persegi implements Bentuk {
+  double sisi;
+  Persegi(this.sisi);
+
+  @override
+  double hitungLuas() => sisi * sisi;
+
+  @override
+  double hitungKeliling() => 4 * sisi;
+
+  @override
+  void info() {
+    print('Persegi sisi $sisi → Luas ${hitungLuas()} | Keliling ${hitungKeliling()}');
+  }
+}
+
+class Lingkaran implements Bentuk {
+  double radius;
+  Lingkaran(this.radius);
+
+  @override
+  double hitungLuas() => 3.14 * radius * radius;
+
+  @override
+  double hitungKeliling() => 2 * 3.14 * radius;
+
+  @override
+  void info() {
+    print('Lingkaran radius $radius → Luas ${hitungLuas()} | Keliling ${hitungKeliling()}');
+  }
+}
+
+void main() {
+  Bentuk b1 = Persegi(4);
+  Bentuk b2 = Lingkaran(7);
+
+  b1.info();
+  b2.info();
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('95a6323bafea8e88259d689208a53f9f')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
 <div class="section">
-<h2>- RINGKASAN MATERI</h2>
-<p>1. Constructor: Dart menyediakan berbagai jenis konstruktor untuk membuat objek dengan cara yang lebih fleksibel sesuai kebutuhan.</p>
-​
-<p>2. Enkapsulasi: Melindungi data dengan menggunakan private field (ditandai dengan awalan garis bawah  _ ).</p>
-​
-<p>3. Getter & Setter: Memberikan cara yang aman untuk mengakses dan mengubah data private dengan kontrol tambahan.</p>
+<h2>KESIMPULAN</h2>
+<p>Abstraksi dan polimorfisme adalah konsep kunci dalam pemrograman berorientasi objek. Abstraksi menyederhanakan sistem dengan fokus pada fungsi utama dan menyembunyikan detail tidak perlu. Polimorfisme memungkinkan satu entitas memiliki berbagai perilaku, membuat program lebih fleksibel. Bersama-sama, mereka membuat kode terstruktur, mudah dikembangkan, digunakan kembali, dan dirawat.</p>
+</div>
+
+<div class="section" id="section4">
+<h2>BONUS 1: CLASS PEKERJA</h2>
+<p>Latihan ini mengintegrasikan konsep pewarisan kelas, polimorfisme, dan validasi tipe data. Kelas turunan menerima dan modifikasi metode dari kelas utama, dengan kemampuan variabel kelas utama untuk menyimpan berbagai objek turunan yang memiliki cara kerja berbeda. Melalui operator  is  dan  as , kita bisa memverifikasi jenis objek yang digunakan, sehingga eksekusi metode menjadi lebih terjamin keamanannya.</p>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+abstract class Pekerja {
+  void bekerja();
+}
+
+class Programmer implements Pekerja {
+  @override
+  void bekerja() {
+    print('Coding aplikasi');
+  }
+}
+
+class Dokter implements Pekerja {
+  @override
+  void bekerja() {
+    print('Mengobati pasien');
+  }
+}
+
+class Guru implements Pekerja {
+  @override
+  void bekerja() {
+    print('Mengajar siswa');
+  }
+}
+
+void main() {
+  List<Pekerja> pekerja = [
+    Programmer(),
+    Dokter(),
+    Guru()
+  ];
+
+  for (var p in pekerja) {
+    p.bekerja();
+  }
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('f9f9f476215688e075e168016626a30e')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<div class="section" id="section4">
+<h2>CLASS TABLET</h2>
+<p>Berbagai objek subclass disimpan dalam list, setiap objek jalankan metode sesuai jenisnya saat diiterasi.</p>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+class Komputer {
+  void prosesData() {
+    print('Memproses data...');
+  }
+}
+
+mixin KameraMixin {
+  void ambilFoto() {
+    print('Tablet mengambil foto');
+  }
+}
+
+mixin TeleponMixin {
+  void menelepon() {
+    print('Tablet melakukan panggilan');
+  }
+}
+
+class Tablet extends Komputer with KameraMixin, TeleponMixin {
+  void info() {
+    print('Ini adalah Tablet (Komputer + Kamera + Telepon)');
+  }
+}
+
+void main() {
+  Tablet t = Tablet();
+
+  t.info();
+  t.prosesData();
+  t.ambilFoto();
+  t.menelepon();
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('709fae14cba72e4dad9b4f3acdf11e29')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<div class="section" id="section4">
+<h2>CLASS 3: CLASS MATHUTILS</h2>
+<p>Kelas dengan fungsi statis matematika, diakses langsung tanpa instance sehingga praktis untuk digunakan berulang.</p>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+import 'dart:math';
+class MathUtils {
+  static final Random _random = Random();
+
+  static int faktorial(int n) {
+    if (n < 0) {
+      throw ArgumentError('n tidak boleh negatif');
+    }
+    if (n <= 1) return 1;
+    return n * faktorial(n - 1);
+  }
+
+  static bool isPrima(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i <= sqrt(n).toInt(); i++) {
+      if (n % i == 0) return false;
+    }
+    return true;
+  }
+
+  static double bulatkan(double angka, int desimal) {
+    double faktor = pow(10, desimal).toDouble();
+    return (angka * faktor).round() / faktor;
+  }
+
+  static int randomInt(int min, int max) {
+    if (min > max) {
+      throw ArgumentError('min tidak boleh lebih besar dari max');
+    }
+    return min + _random.nextInt(max - min + 1);
+  }
+
+  static double randomDouble(double min, double max) {
+    if (min > max) {
+      throw ArgumentError('min tidak boleh lebih besar dari max');
+    }
+    return min + _random.nextDouble() * (max - min);
+  }
+
+  static double rataRata(List<double> data) {
+    if (data.isEmpty) {
+      throw ArgumentError('List tidak boleh kosong');
+    }
+    double total = data.reduce((a, b) => a + b);
+    return total / data.length;
+  }
+
+  static double median(List<double> data) {
+    if (data.isEmpty) {
+      throw ArgumentError('List tidak boleh kosong');
+    }
+
+    List<double> sorted = List.from(data)..sort();
+    int n = sorted.length;
+
+    if (n % 2 == 1) {
+      return sorted[n ~/ 2];
+    } else {
+      return (sorted[n ~/ 2 - 1] + sorted[n ~/ 2]) / 2;
+    }
+  }
+}
+
+void main() {
+  print(MathUtils.faktorial(5));
+  print(MathUtils.isPrima(7));
+  print(MathUtils.bulatkan(3.14159, 2));
+  print(MathUtils.randomInt(1, 10));
+  print(MathUtils.randomDouble(1.0, 5.0));
+  print(MathUtils.rataRata([1, 2, 3, 4, 5]));
+  print
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('0870d34a40236a2a00642877d86f19d4')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
+</div>
+
+<div class="section" id="section4">
+<h2>CHALLENGE</h2>
+<p>- Sistem Media Player: Buat sistem dengan kelas abstrak dan interface;  AudioPlayer  dan  VideoPlayer  terapkan metode sama tapi aksi berbeda sesuai media, latih abstraksi dan polimorfisme.</p>
+<div class="code-box">
+<pre>
+// Nama  : Alicia Putri Lestari
+// Nim   : 251410011
+// Kelas : SI2A
+
+abstract class MediaPlayer {
+  void play();
+}
+
+abstract class Playable {
+  void play();
+}
+
+abstract class Pausable {
+  void pause();
+}
+
+class AudioPlayer extends MediaPlayer implements Playable, Pausable {
+  @override
+  void play() {
+    print('Memutar audio');
+  }
+
+  @override
+  void pause() {
+    print('Pause audio');
+  }
+}
+
+class VideoPlayer extends MediaPlayer implements Playable, Pausable {
+  @override
+  void play() {
+    print('Memutar video');
+  }
+
+  @override
+  void pause() {
+    print('Pause video');
+  }
+}
+
+void main() {
+  AudioPlayer a = AudioPlayer();
+  VideoPlayer v = VideoPlayer();
+
+  a.play();
+  a.pause();
+
+  v.play();
+  v.pause();
+}
+</pre>
+</div>
+<button class="dartpad-btn" onclick="openDartPad('efee4ce4f905640cbf21a280f4c6eae7')">
+    <i>▶</i> Jalankan Kode di DartPad
+</button>
 </div>
 </div>
 
